@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyber-Circuit | Evidence-Bounded Cloud Security Change Assurance</title>
+<meta name="description" content="Evaluate proposed AWS permission changes against real observed operations and a captured reference authorization state. Get an inspectable, bounded result — or UNKNOWN when the evidence is incomplete.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header"><div class="site-wrap site-header-inner">
+<a class="brand" href="index.html">Cyber-Circuit</a>
+<nav class="site-nav" aria-label="Main">
+<a href="browser.html">Cyber-Circuit Browser</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div></header>
+<main>
+<div class="cc-home">
+
+<div class="cc-wrap">
+
+<section class="cc-sec cc-sec-first">
+<p class="cc-eyebrow">Evidence-Bounded Change Assurance for Cloud Security</p>
+<h1 class="cc-h1">Know what a security change will actually break — and know when the evidence isn’t enough.</h1>
+<p class="cc-lede">Before you revoke a permission, Cyber-Circuit evaluates the proposed change against a real observed operation and a captured reference authorization state.</p>
+<p class="cc-wf">Current AWS workflow: <strong>ESTABLISHED_AFFECTED</strong> when the evidence establishes impact. <strong>UNKNOWN</strong> when the evidence cannot establish the effect.</p>
+<div class="cc-btnrow">
+<a class="cc-btn cc-btn-p" href="contact.html">Request an evaluation</a>
+<a class="cc-btn cc-btn-s" href="#method">See the method</a>
+</div>
+<div class="cc-strip" aria-label="Evaluation flow">
+<span class="cc-s">Observed Operation</span><span class="cc-a" aria-hidden="true">→</span>
+<span class="cc-s">Reference State</span><span class="cc-a" aria-hidden="true">→</span>
+<span class="cc-s">IAM Policy Simulation</span><span class="cc-a" aria-hidden="true">→</span>
+<span class="cc-s">State Verification</span><span class="cc-a" aria-hidden="true">→</span>
+<span class="cc-s">Bounded Result</span>
+</div>
+</section>
+
+<section class="cc-sec">
+<div class="cc-grid2">
+<div class="cc-body">
+<h2 class="cc-h2">A permission can look unused and still be carrying production.</h2>
+<p>A permission’s presence tells you it exists — not whether a real production operation depends on it.</p>
+<p>Revoke uncertain access and production can break. Keep every grant in place and unnecessary exposure accumulates.</p>
+</div>
+<div>
+<div class="cc-q"><p>“For this observed operation, using this captured authorization state as the evaluation reference, what does the evidence establish about this proposed withdrawal?”</p></div>
+<p class="cc-qsub">Cyber-Circuit answers this question without converting missing evidence into certainty.</p>
+</div>
+</div>
+</section>
+
+<section class="cc-sec" id="method">
+<p class="cc-eyebrow">Method</p>
+<h2 class="cc-h2">Evidence before assertion.</h2>
+<div class="cc-steps">
+<div class="cc-stepc"><p class="cc-n">01</p><p class="cc-t">Observe</p><p class="cc-d">Anchor the evaluation to a real CloudTrail-observed operation.</p></div>
+<div class="cc-stepc"><p class="cc-n">02</p><p class="cc-t">Capture</p><p class="cc-d">Capture the acting principal’s relevant authorization state as the reference.</p></div>
+<div class="cc-stepc"><p class="cc-n">03</p><p class="cc-t">Define</p><p class="cc-d">Identify the exact permission withdrawal being considered.</p></div>
+<div class="cc-stepc"><p class="cc-n">04</p><p class="cc-t">Simulate</p><p class="cc-d">Run the counterfactual through live AWS IAM policy simulation.</p></div>
+<div class="cc-stepc"><p class="cc-n">05</p><p class="cc-t">Verify</p><p class="cc-d">Immediately re-collect the acting principal and compare against the reference state.</p></div>
+<div class="cc-stepc"><p class="cc-n">06</p><p class="cc-t">Bound</p><p class="cc-d">Return the strongest conclusion the evidence supports — or UNKNOWN.</p></div>
+</div>
+<p class="cc-note">State verification is a bounded post-evaluation check, not a transactional guarantee that IAM could not change during the simulator call.</p>
+<div class="cc-scope">
+<p class="cc-sl">Current validated scope</p>
+<ul class="cc-chips">
+<li>AWS IAM</li>
+<li>CloudTrail-observed S3 GetObject</li>
+<li>IAM role authorization</li>
+<li>Exact-object inline role-policy grants</li>
+<li>Evidence-backed permission-withdrawal evaluation</li>
+</ul>
+</div>
+</section>
+
+<section class="cc-sec">
+<div class="cc-evgrid">
+<div>
+<p class="cc-eyebrow">Evidence</p>
+<h2 class="cc-h2">The conclusion comes with its working.</h2>
+<div class="cc-row"><span class="cc-rl">Observed event</span><p class="cc-rd">The CloudTrail record anchoring the operation.</p></div>
+<div class="cc-row"><span class="cc-rl">Authorization reference</span><p class="cc-rd">The captured state used as the evaluation reference.</p></div>
+<div class="cc-row"><span class="cc-rl">State hash</span><p class="cc-rd">An identifier for the captured authorization state used as the evaluation reference.</p></div>
+<div class="cc-row"><span class="cc-rl">Policy/grant mapping</span><p class="cc-rd">The authorization relationships relevant to the proposed withdrawal.</p></div>
+<div class="cc-row"><span class="cc-rl">Simulator evidence</span><p class="cc-rd">Evidence captured from live IAM policy simulation.</p></div>
+<div class="cc-row"><span class="cc-rl">State verification</span><p class="cc-rd">Immediate post-evaluation re-collection compared against the reference.</p></div>
+<div class="cc-row cc-row-last"><span class="cc-rl">Refusal reasons</span><p class="cc-rd">The missing or inconsistent context behind an UNKNOWN result.</p></div>
+</div>
+<div>
+<p class="cc-eyebrow">Validation</p>
+<h2 class="cc-h2">Small cases. Inspectable evidence.</h2>
+<div class="cc-vrow"><div class="cc-vt"><span class="cc-vn">Single necessary grant</span><span class="cc-badge cc-b-ea">ESTABLISHED_AFFECTED</span></div><p class="cc-vd">In the controlled Phase 5B experiment, the observed operation depended on one necessary exact-object grant. With that grant removed, the operation was subsequently denied. IAM stability during the original experiment was maintained operationally.</p></div>
+<div class="cc-vrow"><div class="cc-vt"><span class="cc-vn">Independently redundant grants</span><span class="cc-badge cc-b-un">UNKNOWN</span></div><p class="cc-vd">Independent authorization paths kept the evidence from supporting a stronger conclusion.</p></div>
+<div class="cc-vrow cc-vrow-last"><div class="cc-vt"><span class="cc-vn">Missing conditional authorization context</span><span class="cc-badge cc-b-un">UNKNOWN</span></div><p class="cc-vd">Required conditional context was absent, so the evidence could not establish the effect.</p></div>
+<div class="cc-hard"><strong>Current hardening:</strong> if post-evaluation principal state cannot be verified against the captured reference, Cyber-Circuit refuses certainty.</div>
+</div>
+</div>
+</section>
+
+<section class="cc-sec">
+<div class="cc-cta">
+<h2 class="cc-h2">Evaluate the change before you make it.</h2>
+<p>Bring Cyber-Circuit one real observed operation and one proposed permission withdrawal. Get an evidence-bounded evaluation showing what can be established, what cannot, and why.</p>
+<div class="cc-btnrow cc-btnrow-tight"><a class="cc-btn cc-btn-p" href="contact.html">Request an evaluation</a></div>
+<p class="cc-re">No universal safety claims. No opaque confidence scores. No inferred certainty across missing evidence.</p>
+</div>
+</section>
+
+</div>
+</div>
+</main>
+<footer class="site-footer"><div class="site-wrap">
+<p><strong style="color:#101828">Cyber-Circuit</strong> — Evidence-Bounded Change Assurance for Cloud Security</p>
+<p>A product of Quantum Clarity LLC &middot; <a href="mailto:info@quantum-clarity.com">info@quantum-clarity.com</a></p>
+</div></footer>
+</body>
+</html>
