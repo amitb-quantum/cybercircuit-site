@@ -1,8 +1,12 @@
-/* CyberCircuit.ai — shared site styles. Restrained, technical, calm. */
+/* CyberCircuit.ai — shared site styles. Light, colorful, confident. */
 :root{
   --ink:#101828; --body:#344054; --muted:#475467; --faint:#667085;
   --line:#e9edf2; --line-soft:#eef1f5; --panel:#fbfcfe;
-  --blue:#1d4fa3; --blue-soft:#eaf0fb; --dark:#131c2c;
+  --blue:#1f5fd6; --blue-deep:#1748a8; --blue-soft:#eaf0fb; --dark:#131c2c;
+  --teal:#0d9488; --teal-soft:#e6f7f4;
+  --amber:#d97706; --amber-soft:#fdf3e3;
+  --violet:#7c3aed; --violet-soft:#f1eafd;
+  --rose:#e11d48; --rose-soft:#fdeef2;
   --font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
@@ -207,3 +211,62 @@ main{display:block}
 .site-header-inner{flex-wrap:wrap;padding:12px 0}
 .site-nav{gap:18px}
 }
+
+/* ================= COLOR THEME — light, vivid, never dark ================= */
+/* gradient brand */
+.brand{background:linear-gradient(90deg,#1e56c8,#0d9488);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand:hover{color:transparent}
+
+/* hero washes */
+.cc-home .cc-sec-first{background:linear-gradient(180deg,#e9f1fe 0%,#f4f9ff 55%,#ffffff 100%)}
+.cc-about .cc-sec-first{background:linear-gradient(180deg,#eef4ff 0%,#f7fbff 60%,#ffffff 100%)}
+.cc-browser .cc-sec-first{background:linear-gradient(180deg,#e6faf7 0%,#f4fdfc 55%,#ffffff 100%)}
+.cc-contact .cc-sec{background:linear-gradient(180deg,#f3effe 0%,#faf8ff 45%,#ffffff 100%)}
+
+/* vivid primary buttons */
+.cc-home .cc-btn-p,.cc-browser .cc-btn-p{background:var(--blue);color:#ffffff}
+.cc-home .cc-btn-p:hover,.cc-browser .cc-btn-p:hover{background:var(--blue-deep);color:#ffffff}
+
+/* bright gradient CTA panels (replaces dark navy) */
+.cc-home .cc-cta,.cc-about .cc-cta{background:linear-gradient(135deg,#1e56c8 0%,#0d9488 100%);color:#eaf2ff}
+.cc-home .cc-cta .cc-h2,.cc-about .cc-cta .cc-h2{color:#ffffff}
+.cc-home .cc-cta p{color:#dbe7ff}
+.cc-home .cc-cta .cc-btn-p,.cc-about .cc-cta .cc-btn-p{background:#ffffff;color:var(--blue-deep)}
+.cc-home .cc-cta .cc-btn-p:hover,.cc-about .cc-cta .cc-btn-p:hover{background:#eef4ff;color:var(--blue-deep)}
+.cc-home .cc-re{color:#c9d9f7}
+
+/* accent-topped cards */
+.cc-home .cc-stepc:nth-child(1){border-top:3px solid var(--blue);background:#f5f8fe}
+.cc-home .cc-stepc:nth-child(2){border-top:3px solid var(--teal);background:#f2fbfa}
+.cc-home .cc-stepc:nth-child(3){border-top:3px solid var(--violet);background:#f7f4fe}
+.cc-home .cc-stepc:nth-child(2) .cc-n{color:var(--teal)}
+.cc-home .cc-stepc:nth-child(3) .cc-n{color:var(--violet)}
+.cc-about .cc-card:nth-child(1){border-top:3px solid var(--blue);background:#f5f8fe}
+.cc-about .cc-card:nth-child(2){border-top:3px solid var(--teal);background:#f2fbfa}
+.cc-about .cc-card:nth-child(3){border-top:3px solid var(--amber);background:#fdf8ef}
+.cc-about .cc-card:nth-child(4){border-top:3px solid var(--violet);background:#f7f4fe}
+.cc-browser .cc-grid3 .cc-card:nth-child(1){border-top:3px solid var(--blue);background:#f5f8fe}
+.cc-browser .cc-grid3 .cc-card:nth-child(2){border-top:3px solid var(--teal);background:#f2fbfa}
+.cc-browser .cc-grid3 .cc-card:nth-child(3){border-top:3px solid var(--violet);background:#f7f4fe}
+.cc-browser .cc-steps .cc-stepc:nth-child(1){border-top:3px solid var(--blue);background:#f5f8fe}
+.cc-browser .cc-steps .cc-stepc:nth-child(2){border-top:3px solid var(--teal);background:#f2fbfa}
+.cc-browser .cc-steps .cc-stepc:nth-child(3){border-top:3px solid var(--amber);background:#fdf8ef}
+.cc-browser .cc-dlcard:nth-child(1){border-top:3px solid var(--blue)}
+.cc-browser .cc-dlcard:nth-child(2){border-top:3px solid var(--teal)}
+.cc-browser .cc-demo-card:nth-child(1){border-top:3px solid var(--teal)}
+.cc-browser .cc-demo-card:nth-child(2){border-top:3px solid var(--blue)}
+.cc-browser .cc-demo-card:nth-child(3){border-top:3px solid var(--violet)}
+
+/* meaningful outcome badges */
+.cc-home .cc-b-ea{background:var(--rose-soft);color:#be123c;border:1px solid #fecdd3}
+.cc-home .cc-b-un{background:var(--amber-soft);color:#b45309;border:1px solid #fde68a}
+
+/* tinted panels */
+.cc-home .cc-strip{background:linear-gradient(90deg,#f1f6ff,#f2fbf9);border-color:#d8e4f8}
+.cc-home .cc-q{background:#f1f6ff;border-color:#d5e2f8}
+.cc-home .cc-scope{background:#f6f9ff;border-color:#dfe8f8}
+.cc-home .cc-hard{background:#fdf8ef;border-color:#f0dcae;border-style:solid}
+.cc-browser .cc-demo{background:#f4fdfc;border-color:#cdeae6}
+
+/* light footer wash */
+.site-footer{background:#f6f9ff}
