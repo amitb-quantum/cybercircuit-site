@@ -109,6 +109,7 @@ main{display:block}
 .cc-about .cc-body{max-width:720px}
 .cc-about .cc-body p{margin:0 0 14px}
 .cc-about .cc-small{font-size:.9rem;color:var(--faint)}
+.cc-about .cc-note{margin:24px 0 0;max-width:720px;font-size:.95rem;color:var(--muted);border-left:3px solid var(--teal);padding-left:16px}
 .cc-about .cc-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .cc-about .cc-card{border:1px solid #e4e8ef;border-radius:10px;padding:22px;background:#ffffff}
 .cc-about .cc-ct{font-size:1rem;font-weight:700;color:var(--ink);margin:0 0 8px}
