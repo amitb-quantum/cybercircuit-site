@@ -209,8 +209,8 @@ main{display:block}
 /* ---------- responsive chrome ---------- */
 @media (max-width:780px){
 .site-wrap{padding:0 20px}
-.site-header-inner{flex-wrap:wrap;padding:12px 0}
-.site-nav{gap:18px}
+.site-header-inner{flex-wrap:wrap;padding:12px 20px}
+.site-nav{gap:8px 18px}
 }
 
 /* ================= COLOR THEME — light, vivid, never dark ================= */
@@ -271,3 +271,100 @@ main{display:block}
 
 /* light footer wash */
 .site-footer{background:#f6f9ff}
+
+/* ================= AGENT GUARDRAIL home (index.html) ================= */
+/* One bold element: the journal ledger in the hero. Everything else stays quiet. */
+.cc-agent{--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--body);line-height:1.6}
+.cc-agent .ag-wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.cc-agent .ag-prose > *{max-width:760px}
+.cc-agent .ag-hero{padding:64px 0 72px}
+.cc-agent .ag-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cc-agent .ag-h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.025em;color:var(--ink);margin:0 0 20px;font-weight:800;max-width:11em}
+.cc-agent .ag-lede{font-size:1.14rem;max-width:34em;margin:0 0 28px;color:var(--body)}
+.cc-agent .ag-status{font-size:.92rem;color:var(--faint);margin:22px 0 0}
+.cc-agent .ag-h2{font-size:clamp(1.45rem,2.6vw,1.95rem);line-height:1.22;letter-spacing:-.012em;color:var(--ink);margin:0 0 18px;font-weight:700;max-width:24em}
+.cc-agent .ag-sec{padding:72px 0;border-top:1px solid var(--line)}
+.cc-agent .ag-prose p{margin:0 0 14px;font-size:1.04rem}
+.cc-agent .ag-intro{max-width:44em;margin:0 0 26px}
+
+/* buttons */
+.cc-agent .ag-btnrow{display:flex;flex-wrap:wrap;gap:12px}
+.cc-agent .ag-btn{display:inline-block;padding:12px 24px;border-radius:7px;font-weight:600;font-size:.97rem;text-decoration:none;line-height:1.4}
+.cc-agent .ag-btn-p{background:var(--blue);color:#ffffff}
+.cc-agent .ag-btn-p:hover{background:var(--blue-deep);color:#ffffff}
+.cc-agent .ag-btn-s{border:1px solid #b6bfce;color:var(--ink);background:#ffffff}
+.cc-agent .ag-btn-s:hover{border-color:var(--ink)}
+.cc-agent .ag-btn-light{background:#ffffff;color:var(--blue-deep)}
+.cc-agent .ag-btn-light:hover{background:#eef4ff}
+.cc-agent a:focus-visible{outline:3px solid #8fb1ef;outline-offset:3px}
+
+/* the ledger */
+.cc-agent .ag-ledger{margin:0;border:1px solid #dfe5ee;border-radius:12px;background:var(--panel);padding:22px 24px 20px}
+.cc-agent .ag-ledger-cap{font-size:.92rem;color:var(--muted);margin:0 0 14px;max-width:34em}
+.cc-agent .ag-rows{list-style:none;margin:0;padding:0;position:relative}
+/* the chain: a rail joining every record to the one before it */
+.cc-agent .ag-rows::before{content:"";position:absolute;left:6px;top:14px;bottom:14px;width:2px;background:#cfd8e6}
+.cc-agent .ag-row{position:relative;display:grid;grid-template-columns:5.2em 1fr auto;gap:12px;align-items:baseline;padding:8px 0 8px 26px;border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:.84rem}
+.cc-agent .ag-row:last-child{border-bottom:0}
+.cc-agent .ag-row::before{content:"";position:absolute;left:1px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:#ffffff;border:2px solid #98a8c2}
+.cc-agent .ag-rec{color:var(--ink);font-weight:600}
+.cc-agent .ag-det{color:var(--muted)}
+.cc-agent .ag-st{font-family:var(--font);font-size:.78rem;font-weight:600;color:var(--faint)}
+.cc-agent .ag-hot .ag-rec,.cc-agent .ag-hot .ag-det{color:var(--rose)}
+.cc-agent .ag-hot::before{border-color:var(--rose);background:var(--rose-soft)}
+.cc-agent .ag-st-q{color:var(--rose);background:var(--rose-soft);border-radius:5px;padding:1px 8px}
+.cc-agent .ag-ledger-foot{font-size:.86rem;color:var(--faint);margin:14px 0 0;max-width:36em}
+@media (prefers-reduced-motion:no-preference){
+.cc-agent .ag-row{opacity:0;animation:ag-record .32s ease-out forwards;animation-delay:calc(.25s + var(--i) * .2s)}
+@keyframes ag-record{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+
+/* sequence */
+.cc-agent .ag-steps{list-style:none;counter-reset:ag;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:34px 40px}
+.cc-agent .ag-steps li{counter-increment:ag;position:relative;padding-top:38px}
+.cc-agent .ag-steps li::before{content:counter(ag);position:absolute;top:0;left:0;width:28px;height:28px;border-radius:50%;background:var(--blue-soft);color:var(--blue-deep);font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.cc-agent .ag-steps li:nth-child(n+3)::before{background:var(--rose-soft);color:var(--rose)}
+.cc-agent .ag-steps li:nth-child(6)::before{background:var(--teal-soft);color:var(--teal)}
+.cc-agent .ag-steps h3{font-size:1.06rem;color:var(--ink);margin:0 0 6px}
+.cc-agent .ag-steps p{font-size:.95rem;color:var(--muted);margin:0;max-width:30em}
+
+/* tables */
+.cc-agent table{border-collapse:collapse;width:100%;max-width:960px}
+.cc-agent th{text-align:left;font-size:.9rem;color:var(--ink);font-weight:700;padding:0 18px 12px 0;border-bottom:2px solid var(--line)}
+.cc-agent td{padding:13px 18px 13px 0;border-bottom:1px solid var(--line-soft);font-size:.97rem;vertical-align:top}
+.cc-agent .ag-compare td:first-child{color:var(--faint)}
+.cc-agent .ag-compare td:last-child{color:var(--ink);font-weight:500}
+.cc-agent .ag-proof td:last-child{white-space:nowrap;width:1%}
+.cc-agent .ag-tag{display:inline-block;font-size:.8rem;font-weight:600;border-radius:5px;padding:2px 9px}
+.cc-agent .ag-tag-ok{background:var(--teal-soft);color:#0b7a70}
+.cc-agent .ag-tag-wip{background:#f2f4f7;color:var(--muted);border:1px solid #e1e5ec}
+
+/* limits */
+.cc-agent .ag-limits{margin:0;padding:0 0 0 1.1em}
+.cc-agent .ag-limits li{margin:0 0 10px;font-size:1.02rem}
+
+/* closing panel, same gradient as the rest of the site */
+.cc-agent .ag-sec-cta{border-top:0;padding-top:24px}
+.cc-agent .ag-cta{background:linear-gradient(135deg,#1e56c8 0%,#0d9488 100%);border-radius:14px;padding:52px 52px 44px;color:#eaf2ff}
+.cc-agent .ag-cta .ag-h2{color:#ffffff;margin-bottom:12px}
+.cc-agent .ag-cta p{max-width:40em;margin:0 0 24px;color:#dbe7ff}
+.cc-agent .ag-cta .ag-cta-note{margin:22px 0 0;font-size:.86rem;color:#c9d9f7}
+
+@media (max-width:900px){
+.cc-agent .ag-hero-grid{grid-template-columns:1fr;gap:40px}
+.cc-agent .ag-steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:780px){
+.cc-agent .ag-wrap{padding:0 20px}
+.cc-agent .ag-hero{padding:44px 0 52px}
+.cc-agent .ag-sec{padding:52px 0}
+.cc-agent .ag-steps{grid-template-columns:1fr}
+.cc-agent .ag-ledger{padding:18px 16px}
+.cc-agent .ag-row{grid-template-columns:4.4em 1fr;font-size:.8rem}
+.cc-agent .ag-st{grid-column:2;justify-self:start}
+.cc-agent .ag-proof td:last-child{white-space:normal}
+.cc-agent .ag-cta{padding:38px 26px}
+}
+
+/* research page: marks the AWS work as earlier research */
+.cc-home .cc-research-note{max-width:720px;margin:0 0 26px;padding:12px 16px;border:1px solid #dfe5ee;border-left:3px solid var(--amber);border-radius:0 8px 8px 0;background:#ffffff;font-size:.93rem;color:var(--muted)}

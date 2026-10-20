@@ -3,118 +3,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cyber-Circuit | Evidence-Bounded Cloud Security Change Assurance</title>
-<meta name="description" content="Evaluate proposed AWS permission changes against real observed operations and a captured reference authorization state. Get an inspectable, bounded result — or UNKNOWN when the evidence is incomplete.">
+<title>Cyber-Circuit | A circuit breaker for AI agents</title>
+<meta name="description" content="Cyber-Circuit gives an AI agent a fixed budget of tool authority. When the agent goes past it, Cyber-Circuit trips, kills the agent's processes, raises your alarm, and stays tripped until a person resets it on the record.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="site-header"><div class="site-wrap site-header-inner">
 <a class="brand" href="index.html">Cyber-Circuit</a>
 <nav class="site-nav" aria-label="Main">
+<a href="research.html">Research</a>
 <a href="browser.html">Cyber-Circuit Browser</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 </nav>
 </div></header>
 <main>
-<div class="cc-home">
+<div class="cc-agent">
 
-<div class="cc-wrap">
-
-<section class="cc-sec cc-sec-first">
-<p class="cc-eyebrow">Evidence-Bounded Change Assurance for Cloud Security</p>
-<h1 class="cc-h1">Know what a security change will actually break — and know when the evidence isn’t enough.</h1>
-<p class="cc-lede">Before you revoke a permission, Cyber-Circuit evaluates the proposed change against a real observed operation and a captured reference authorization state.</p>
-<p class="cc-wf">Current AWS workflow: <strong>ESTABLISHED_AFFECTED</strong> when the evidence establishes impact. <strong>UNKNOWN</strong> when the evidence cannot establish the effect.</p>
-<div class="cc-btnrow">
-<a class="cc-btn cc-btn-p" href="contact.html">Request an evaluation</a>
-<a class="cc-btn cc-btn-s" href="#method">See the method</a>
+<section class="ag-hero">
+<div class="ag-wrap ag-hero-grid">
+<div class="ag-hero-copy">
+<h1 class="ag-h1">A circuit breaker for AI agents.</h1>
+<p class="ag-lede">Give an agent a fixed budget of tool authority. When it goes past that budget, Cyber-Circuit trips: it cuts the agent's authority, kills its processes, and raises your alarm. It stays tripped until a person resets it, with the reason on the record.</p>
+<div class="ag-btnrow">
+<a class="ag-btn ag-btn-p" href="contact.html">Request early access</a>
+<a class="ag-btn ag-btn-s" href="#proof">See what's proven</a>
 </div>
-<div class="cc-strip" aria-label="Evaluation flow">
-<span class="cc-s">Observed Operation</span><span class="cc-a" aria-hidden="true">→</span>
-<span class="cc-s">Reference State</span><span class="cc-a" aria-hidden="true">→</span>
-<span class="cc-s">IAM Policy Simulation</span><span class="cc-a" aria-hidden="true">→</span>
-<span class="cc-s">State Verification</span><span class="cc-a" aria-hidden="true">→</span>
-<span class="cc-s">Bounded Result</span>
+<p class="ag-status">Early access for Linux, MCP tools, and one agent per gateway.</p>
+</div>
+
+<figure class="ag-ledger">
+<figcaption class="ag-ledger-cap">One run, as the journals record it. An agent with a quota of two tries a third call.</figcaption>
+<ol class="ag-rows">
+<li class="ag-row" style="--i:0"><span class="ag-rec">lease</span><span class="ag-det">mark &middot; allowed, 1 of 2</span><span class="ag-st">Active</span></li>
+<li class="ag-row" style="--i:1"><span class="ag-rec">use</span><span class="ag-det">mark &middot; ran</span><span class="ag-st">Active</span></li>
+<li class="ag-row" style="--i:2"><span class="ag-rec">lease</span><span class="ag-det">mark &middot; allowed, 2 of 2</span><span class="ag-st">Active</span></li>
+<li class="ag-row" style="--i:3"><span class="ag-rec">use</span><span class="ag-det">mark &middot; ran</span><span class="ag-st">Active</span></li>
+<li class="ag-row ag-hot" style="--i:4"><span class="ag-rec">lease</span><span class="ag-det">mark &middot; denied, quota exhausted</span><span class="ag-st">Active</span></li>
+<li class="ag-row ag-hot" style="--i:5"><span class="ag-rec">tripped</span><span class="ag-det">quota_exhausted:mark</span><span class="ag-st ag-st-q">Quarantined</span></li>
+<li class="ag-row ag-hot" style="--i:6"><span class="ag-rec">kill</span><span class="ag-det">scope stopped, confirmed</span><span class="ag-st ag-st-q">Quarantined</span></li>
+<li class="ag-row ag-hot" style="--i:7"><span class="ag-rec">alarm</span><span class="ag-det">notifier delivered</span><span class="ag-st ag-st-q">Quarantined</span></li>
+</ol>
+<p class="ag-ledger-foot">Each record is hash-linked to the one before it, so an edited record fails verification. After a restart the gateway is still quarantined.</p>
+</figure>
 </div>
 </section>
 
-<section class="cc-sec">
-<div class="cc-grid2">
-<div class="cc-body">
-<h2 class="cc-h2">A permission can look unused and still be carrying production.</h2>
-<p>A permission’s presence tells you it exists — not whether a real production operation depends on it.</p>
-<p>Revoke uncertain access and production can break. Keep every grant in place and unnecessary exposure accumulates.</p>
-</div>
-<div>
-<div class="cc-q"><p>“For this observed operation, using this captured authorization state as the evaluation reference, what does the evidence establish about this proposed withdrawal?”</p></div>
-<p class="cc-qsub">Cyber-Circuit answers this question without converting missing evidence into certainty.</p>
-</div>
+<section class="ag-sec">
+<div class="ag-wrap ag-prose">
+<h2 class="ag-h2">Agents act faster than anyone can watch them.</h2>
+<p>A coding agent with tool access can call APIs, change repositories, and spend credentials in seconds. Guardrails that judge intent with another model can be argued with. Rate limits forget: they slow an agent down, then let it carry on.</p>
+<p>Cyber-Circuit is narrower and firmer. Authority is granted up front in a trusted config, and the agent can only end up with less of it, never more. Whether a call is allowed is decided by fixed policy. No language model sits in that path.</p>
 </div>
 </section>
 
-<section class="cc-sec" id="method">
-<p class="cc-eyebrow">Method</p>
-<h2 class="cc-h2">Evidence before assertion.</h2>
-<div class="cc-steps">
-<div class="cc-stepc"><p class="cc-n">01</p><p class="cc-t">Observe</p><p class="cc-d">Anchor the evaluation to a real CloudTrail-observed operation.</p></div>
-<div class="cc-stepc"><p class="cc-n">02</p><p class="cc-t">Capture</p><p class="cc-d">Capture the acting principal’s relevant authorization state as the reference.</p></div>
-<div class="cc-stepc"><p class="cc-n">03</p><p class="cc-t">Define</p><p class="cc-d">Identify the exact permission withdrawal being considered.</p></div>
-<div class="cc-stepc"><p class="cc-n">04</p><p class="cc-t">Simulate</p><p class="cc-d">Run the counterfactual through live AWS IAM policy simulation.</p></div>
-<div class="cc-stepc"><p class="cc-n">05</p><p class="cc-t">Verify</p><p class="cc-d">Immediately re-collect the acting principal and compare against the reference state.</p></div>
-<div class="cc-stepc"><p class="cc-n">06</p><p class="cc-t">Bound</p><p class="cc-d">Return the strongest conclusion the evidence supports — or UNKNOWN.</p></div>
+<section class="ag-sec">
+<div class="ag-wrap">
+<h2 class="ag-h2">What happens when an agent goes too far</h2>
+<ol class="ag-steps">
+<li><h3>Grant</h3><p>Each tool gets a quota and an expiry in a trusted config. The agent gets one-use leases against that quota, never the config itself.</p></li>
+<li><h3>Check</h3><p>Every tool call goes through the gateway. It runs only if the policy allows it and the decision has been written to the journal first.</p></li>
+<li><h3>Trip</h3><p>The breaker trips on an exhausted quota, a burst of denied calls, a caller the gateway doesn't recognize, a journal write failure, or an operator's command.</p></li>
+<li><h3>Kill</h3><p>The gateway quarantines itself, then kills every process in the agent's scope. The kill only counts once the system confirms the scope has stopped.</p></li>
+<li><h3>Alarm</h3><p>Your notifier script receives the event as JSON. Whether it was delivered, failed, or timed out is recorded, and a failed alarm never undoes the trip.</p></li>
+<li><h3>Reset</h3><p>A restart doesn't clear a trip. An operator does, with a written reason, before an agent is attached again. Spent quota is not refunded.</p></li>
+</ol>
 </div>
-<p class="cc-note">State verification is a bounded post-evaluation check, not a transactional guarantee that IAM could not change during the simulator call.</p>
-<div class="cc-scope">
-<p class="cc-sl">Current validated scope</p>
-<ul class="cc-chips">
-<li>AWS IAM</li>
-<li>CloudTrail-observed S3 GetObject</li>
-<li>IAM role authorization</li>
-<li>Exact-object inline role-policy grants</li>
-<li>Evidence-backed permission-withdrawal evaluation</li>
+</section>
+
+<section class="ag-sec">
+<div class="ag-wrap">
+<h2 class="ag-h2">A breaker, not a speed limit</h2>
+<table class="ag-compare">
+<thead><tr><th scope="col">A rate limit</th><th scope="col">Cyber-Circuit</th></tr></thead>
+<tbody>
+<tr><td>Slows calls down, then lets them continue</td><td>Stops every call until a person resets it</td></tr>
+<tr><td>Forgets on restart</td><td>Stays tripped across restarts</td></tr>
+<tr><td>Keeps counters</td><td>Keeps hash-linked journals of every decision and action</td></tr>
+<tr><td>Doesn't say what happened next</td><td>Records whether the kill and the alarm actually happened</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="ag-sec" id="proof">
+<div class="ag-wrap">
+<h2 class="ag-h2">What's proven, and what isn't yet</h2>
+<p class="ag-intro">Each claim below either passes an automated test on our Linux lab machine (Ubuntu on WSL2) or is marked as not done. The gap between a demo and a guarantee is where security products usually go quiet, so we publish it.</p>
+<table class="ag-proof">
+<thead><tr><th scope="col">Claim</th><th scope="col">Status</th></tr></thead>
+<tbody>
+<tr><td>Tool calls run only within the quota and expiry in the trusted config</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>A trip stops every further tool call</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>A trip kills the agent's process scope, and the kill is confirmed</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>Your alarm runs, and whether it was delivered is recorded</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>A trip survives a restart</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>A reset needs an operator and a reason, starts a new epoch, and refunds no quota</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>An edited journal record fails verification</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>The agent runs in a sandbox with no network, so it can't go around the gateway. Until this ships, an agent with a shell can still reach the network directly.</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
+<tr><td>Model API traffic goes through a forwarder that holds the key, so the agent never sees it</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
+<tr><td>An evidence bundle you can verify on another machine</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
+<tr><td>A real Claude Code agent stopped end to end</td><td><span class="ag-tag ag-tag-wip">Planned</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="ag-sec">
+<div class="ag-wrap ag-prose">
+<h2 class="ag-h2">What we don't claim</h2>
+<ul class="ag-limits">
+<li>Finding rogue agents elsewhere on your network. Cyber-Circuit watches the boundary it owns, and records anything that touches the gateway.</li>
+<li>Protection against a compromised host, root user, or kernel.</li>
+<li>Detecting deletion of the most recent journal records. Edits are caught; a truncated tail is not.</li>
+<li>A separately authenticated operator. Today, reset authority belongs to the user account the gateway runs as.</li>
+<li>Windows, macOS, or more than one agent per gateway.</li>
 </ul>
 </div>
 </section>
 
-<section class="cc-sec">
-<div class="cc-evgrid">
-<div>
-<p class="cc-eyebrow">Evidence</p>
-<h2 class="cc-h2">The conclusion comes with its working.</h2>
-<div class="cc-row"><span class="cc-rl">Observed event</span><p class="cc-rd">The CloudTrail record anchoring the operation.</p></div>
-<div class="cc-row"><span class="cc-rl">Authorization reference</span><p class="cc-rd">The captured state used as the evaluation reference.</p></div>
-<div class="cc-row"><span class="cc-rl">State hash</span><p class="cc-rd">An identifier for the captured authorization state used as the evaluation reference.</p></div>
-<div class="cc-row"><span class="cc-rl">Policy/grant mapping</span><p class="cc-rd">The authorization relationships relevant to the proposed withdrawal.</p></div>
-<div class="cc-row"><span class="cc-rl">Simulator evidence</span><p class="cc-rd">Evidence captured from live IAM policy simulation.</p></div>
-<div class="cc-row"><span class="cc-rl">State verification</span><p class="cc-rd">Immediate post-evaluation re-collection compared against the reference.</p></div>
-<div class="cc-row cc-row-last"><span class="cc-rl">Refusal reasons</span><p class="cc-rd">The missing or inconsistent context behind an UNKNOWN result.</p></div>
-</div>
-<div>
-<p class="cc-eyebrow">Validation</p>
-<h2 class="cc-h2">Small cases. Inspectable evidence.</h2>
-<div class="cc-vrow"><div class="cc-vt"><span class="cc-vn">Single necessary grant</span><span class="cc-badge cc-b-ea">ESTABLISHED_AFFECTED</span></div><p class="cc-vd">In the controlled Phase 5B experiment, the observed operation depended on one necessary exact-object grant. With that grant removed, the operation was subsequently denied. IAM stability during the original experiment was maintained operationally.</p></div>
-<div class="cc-vrow"><div class="cc-vt"><span class="cc-vn">Independently redundant grants</span><span class="cc-badge cc-b-un">UNKNOWN</span></div><p class="cc-vd">Independent authorization paths kept the evidence from supporting a stronger conclusion.</p></div>
-<div class="cc-vrow cc-vrow-last"><div class="cc-vt"><span class="cc-vn">Missing conditional authorization context</span><span class="cc-badge cc-b-un">UNKNOWN</span></div><p class="cc-vd">Required conditional context was absent, so the evidence could not establish the effect.</p></div>
-<div class="cc-hard"><strong>Current hardening:</strong> if post-evaluation principal state cannot be verified against the captured reference, Cyber-Circuit refuses certainty.</div>
+<section class="ag-sec ag-sec-cta">
+<div class="ag-wrap">
+<div class="ag-cta">
+<h2 class="ag-h2">Running agents with real tool access?</h2>
+<p>We're working with a small number of early design partners who run coding agents on Linux. Tell us what your agents can touch, and we'll tell you honestly whether Cyber-Circuit fits yet.</p>
+<a class="ag-btn ag-btn-light" href="contact.html">Request early access</a>
+<p class="ag-cta-note">The enforcement engine underneath, CircuitBreaker, is in private preview.</p>
 </div>
 </div>
 </section>
 
-<section class="cc-sec">
-<div class="cc-cta">
-<h2 class="cc-h2">Evaluate the change before you make it.</h2>
-<p>Bring Cyber-Circuit one real observed operation and one proposed permission withdrawal. Get an evidence-bounded evaluation showing what can be established, what cannot, and why.</p>
-<div class="cc-btnrow cc-btnrow-tight"><a class="cc-btn cc-btn-p" href="contact.html">Request an evaluation</a></div>
-<p class="cc-re">No universal safety claims. No opaque confidence scores. No inferred certainty across missing evidence.</p>
-</div>
-</section>
-
-</div>
 </div>
 </main>
 <footer class="site-footer"><div class="site-wrap">
-<p><strong style="color:#101828">Cyber-Circuit</strong> — Evidence-Bounded Change Assurance for Cloud Security</p>
+<p><strong style="color:#101828">Cyber-Circuit</strong>: a circuit breaker for AI agents</p>
 <p>A product of Quantum Clarity LLC &middot; <a href="mailto:info@quantum-clarity.com">info@quantum-clarity.com</a></p>
 </div></footer>
 </body>

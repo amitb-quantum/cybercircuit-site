@@ -1,6 +1,6 @@
 # cybercircuit.ai
 
-Static site for Cyber-Circuit — Evidence-Bounded Change Assurance for Cloud Security.
+Static site for Cyber-Circuit: a circuit breaker for AI agents.
 A product of Quantum Clarity LLC.
 
 Plain HTML + CSS. No build step, no framework, no dependencies.
@@ -8,14 +8,20 @@ Deploy anywhere that serves static files (currently: Cloudflare Pages).
 
 ## Pages
 
-- `index.html` — Home (ported from the finished Squarespace Code Block, 5 sections)
-- `about.html` — About (ported from the finished Squarespace Code Block, 4 sections)
-- `browser.html` — Cyber-Circuit Browser product page (copy ported from
+- `index.html`: Home. Cyber-Circuit as a circuit breaker for AI agents, built on the
+  CircuitBreaker engine (`amitb-quantum/circuit-breaker`, private preview). Every
+  claim in "What's proven" must map to a test that passes on the lab machine, or be
+  marked In progress or Planned. Update that table when a phase passes.
+- `research.html`: Earlier work. The AWS IAM evidence-bounded change assurance page
+  (formerly the home page), with a note that it is not the current product.
+- `browser.html`: Cyber-Circuit Browser product page (copy ported from
   cyber-circuit.com/cyber-circuit-browser; download buttons point at the real
   GitHub release assets under `amitb-quantum/cyber-circuit-browser` v1.0.0)
-- `contact.html` — Contact (`info@quantum-clarity.com`)
-- `styles.css` — all site styles, namespaced per page (`.cc-home`, `.cc-about`,
-  `.cc-browser`, `.cc-contact`) plus shared header/footer chrome
+- `about.html`: About
+- `contact.html`: Contact (`info@quantum-clarity.com`)
+- `styles.css`: all site styles, namespaced per page (`.cc-agent` for home,
+  `.cc-home` for research, `.cc-about`, `.cc-browser`, `.cc-contact`) plus shared
+  header and footer chrome
 
 ## Local preview
 
@@ -42,7 +48,5 @@ python3 -m http.server 8000
 - Contact email stays `info@quantum-clarity.com` per owner decision.
 - The Squarespace site at cyber-circuit.com stays live and untouched during
   the build; the cutover decision comes later.
-- Services is intentionally out of the navigation: the Squarespace services
-  page is empty, and the product has one focused offering
-  (Evidence-Bounded Change Assurance) with "Request an evaluation" as the CTA.
-  Final structure: Home, About, Browser, Contact.
+- Navigation: Home, Research, Browser, About, Contact. The call to action is
+  "Request early access".
