@@ -26,7 +26,7 @@
 <h1 class="ag-h1">A circuit breaker for AI agents.</h1>
 <p class="ag-lede">Give an agent a fixed budget of tool authority. When it goes past that budget, Cyber-Circuit trips: it cuts the agent's authority, kills its processes, and raises your alarm. It stays tripped until a person resets it, with the reason on the record.</p>
 <div class="ag-btnrow">
-<a class="ag-btn ag-btn-p" href="contact.html">Request early access</a>
+<a class="ag-btn ag-btn-p" href="mailto:info@quantum-clarity.com?subject=Cyber-Circuit%20early%20access">Request early access</a>
 <a class="ag-btn ag-btn-s" href="#proof">See what's proven</a>
 </div>
 <p class="ag-status">Early access for Linux, MCP tools, and one agent per gateway.</p>
@@ -49,16 +49,19 @@
 </div>
 </section>
 
-<section class="ag-sec">
-<div class="ag-wrap ag-prose">
-<h2 class="ag-h2">Agents act faster than anyone can watch them.</h2>
-<p>A coding agent with tool access can call APIs, change repositories, and spend credentials in seconds. Guardrails that judge intent with another model can be argued with. Rate limits forget: they slow an agent down, then let it carry on.</p>
-<p>Cyber-Circuit is narrower and firmer. Authority is granted up front in a trusted config, and the agent can only end up with less of it, never more. Whether a call is allowed is decided by fixed policy. No language model sits in that path.</p>
+<div class="ag-body">
+<div class="ag-wrap">
+
+<section class="ag-card">
+<h2 class="ag-h2">Agents act faster than anyone can watch them</h2>
+<p class="ag-lead">A coding agent with tool access can call APIs, change repositories, and spend credentials in seconds. Guardrails that judge intent with another model can be argued with. Rate limits forget: they slow an agent down, then let it carry on.</p>
+<div class="ag-callout ag-callout-key">
+<strong>Cyber-Circuit is narrower and firmer.</strong>
+<p>Authority is granted up front in a trusted config, and the agent can only end up with less of it, never more. Whether a call is allowed is decided by fixed policy. No language model sits in that path.</p>
 </div>
 </section>
 
-<section class="ag-sec">
-<div class="ag-wrap">
+<section class="ag-card">
 <h2 class="ag-h2">What happens when an agent goes too far</h2>
 <ol class="ag-steps">
 <li><h3>Grant</h3><p>Each tool gets a quota and an expiry in a trusted config. The agent gets one-use leases against that quota, never the config itself.</p></li>
@@ -68,11 +71,9 @@
 <li><h3>Alarm</h3><p>Your notifier script receives the event as JSON. Whether it was delivered, failed, or timed out is recorded, and a failed alarm never undoes the trip.</p></li>
 <li><h3>Reset</h3><p>A restart doesn't clear a trip. An operator does, with a written reason, before an agent is attached again. Spent quota is not refunded.</p></li>
 </ol>
-</div>
 </section>
 
-<section class="ag-sec">
-<div class="ag-wrap">
+<section class="ag-card">
 <h2 class="ag-h2">A breaker, not a speed limit</h2>
 <table class="ag-compare">
 <thead><tr><th scope="col">A rate limit</th><th scope="col">Cyber-Circuit</th></tr></thead>
@@ -83,13 +84,11 @@
 <tr><td>Doesn't say what happened next</td><td>Records whether the kill and the alarm actually happened</td></tr>
 </tbody>
 </table>
-</div>
 </section>
 
-<section class="ag-sec" id="proof">
-<div class="ag-wrap">
+<section class="ag-card" id="proof">
 <h2 class="ag-h2">What's proven, and what isn't yet</h2>
-<p class="ag-intro">Each claim below either passes an automated test on our Linux lab machine (Ubuntu on WSL2) or is marked as not done. The gap between a demo and a guarantee is where security products usually go quiet, so we publish it.</p>
+<p>Each claim below either passes an automated test on our Linux lab machine or is marked as not done. The gap between a demo and a guarantee is where security products usually go quiet, so we publish it.</p>
 <table class="ag-proof">
 <thead><tr><th scope="col">Claim</th><th scope="col">Status</th></tr></thead>
 <tbody>
@@ -106,12 +105,14 @@
 <tr><td>A real Claude Code agent stopped end to end</td><td><span class="ag-tag ag-tag-wip">Planned</span></td></tr>
 </tbody>
 </table>
-</div>
+<p class="ag-tablenote">Lab machine: Ubuntu on WSL2. Results on one machine don't establish portability to other kernels or distributions.</p>
 </section>
 
-<section class="ag-sec">
-<div class="ag-wrap ag-prose">
+<section class="ag-card">
 <h2 class="ag-h2">What we don't claim</h2>
+<p>These limits are the ones the software actually has today. We'd rather publish them than have you find them in production.</p>
+<div class="ag-callout ag-callout-limit">
+<strong>Evidence boundary</strong>
 <ul class="ag-limits">
 <li>Finding rogue agents elsewhere on your network. Cyber-Circuit watches the boundary it owns, and records anything that touches the gateway.</li>
 <li>Protection against a compromised host, root user, or kernel.</li>
@@ -122,16 +123,18 @@
 </div>
 </section>
 
-<section class="ag-sec ag-sec-cta">
-<div class="ag-wrap">
 <div class="ag-cta">
-<h2 class="ag-h2">Running agents with real tool access?</h2>
+<h2>Running agents with real tool access?</h2>
 <p>We're working with a small number of early design partners who run coding agents on Linux. Tell us what your agents can touch, and we'll tell you honestly whether Cyber-Circuit fits yet.</p>
-<a class="ag-btn ag-btn-light" href="contact.html">Request early access</a>
+<div class="ag-btnrow">
+<a class="ag-btn ag-btn-p" href="mailto:info@quantum-clarity.com?subject=Cyber-Circuit%20early%20access">Request early access</a>
+<a class="ag-btn ag-btn-s" href="contact.html">Contact us</a>
+</div>
 <p class="ag-cta-note">The enforcement engine underneath, CircuitBreaker, is in private preview.</p>
 </div>
+
 </div>
-</section>
+</div>
 
 </div>
 </main>
