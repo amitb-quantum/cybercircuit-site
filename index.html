@@ -99,8 +99,8 @@
 <tr><td>A trip survives a restart</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>A reset needs an operator and a reason, starts a new epoch, and refunds no quota</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>An edited journal record fails verification</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
-<tr><td>The agent runs in a sandbox with no network, so it can't go around the gateway. Until this ships, an agent with a shell can still reach the network directly.</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
-<tr><td>Model API traffic goes through a forwarder that holds the key, so the agent never sees it</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
+<tr><td>The agent runs in a sandbox with no network, so it can't go around the gateway or read the model key. Until this ships, an agent with a shell can still reach the network directly.</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
+<tr><td>Model API traffic goes through a forwarder that holds the key, allows only listed request types to one verified host, enforces a request budget, and stops on a trip</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>An evidence bundle you can verify on another machine</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
 <tr><td>A real Claude Code agent stopped end to end</td><td><span class="ag-tag ag-tag-wip">Planned</span></td></tr>
 </tbody>
