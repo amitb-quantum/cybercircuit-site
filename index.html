@@ -99,6 +99,7 @@
 <tr><td>A trip survives a restart</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>A reset needs an operator and a reason, starts a new epoch, and refunds no quota</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>An edited journal record fails verification</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>Evidence is signed with NIST post-quantum signatures (FIPS 205), and deleting records that a checkpoint already sent off the machine covers is detected</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>The agent runs in a sandbox with no network, so it can't go around the gateway or read the model key. Until this ships, an agent with a shell can still reach the network directly.</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
 <tr><td>Model API traffic goes through a forwarder that holds the key, allows only listed request types to one verified host, enforces a request budget, and stops on a trip</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>An evidence bundle you can verify on another machine</td><td><span class="ag-tag ag-tag-wip">In progress</span></td></tr>
@@ -116,7 +117,7 @@
 <ul class="ag-limits">
 <li>Finding rogue agents elsewhere on your network. Cyber-Circuit watches the boundary it owns, and records anything that touches the gateway.</li>
 <li>Protection against a compromised host, root user, or kernel.</li>
-<li>Detecting deletion of the most recent journal records. Edits are caught; a truncated tail is not.</li>
+<li>Detecting deletion of records written after the last signed checkpoint left the machine. Edits are always caught, and deletions are caught once a checkpoint covering them has been sent out.</li>
 <li>A separately authenticated operator. Today, reset authority belongs to the user account the gateway runs as.</li>
 <li>Windows, macOS, or more than one agent per gateway.</li>
 </ul>
