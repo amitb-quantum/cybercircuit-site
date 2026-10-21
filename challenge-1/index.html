@@ -62,7 +62,22 @@
 <h2 class="ag-h2">Committed answers</h2>
 <p>We wrote down the expected verdict for each bundle before publishing, in a file with a random nonce so it can't be guessed. Its SHA-256 is:</p>
 <p><code>85f6352b5e6dec3a816139829c869aeb964b0f64bc02f1692af1b08094d4b368</code></p>
-<p>We'll publish that file after independent answers come in, so anyone can check we didn't change the answers afterwards. Send your verdicts to <a href="mailto:info@quantum-clarity.com?subject=Evidence%20challenge%201">info@quantum-clarity.com</a>.</p>
+<p>Now published: <a href="answer-key.json">answer-key.json</a>. Its SHA-256 matches the value above. You can still try the challenge; send your verdicts to <a href="mailto:info@quantum-clarity.com?subject=Evidence%20challenge%201">info@quantum-clarity.com</a>.</p>
+</section>
+
+<section class="ag-card" id="result-1">
+<h2 class="ag-h2">First independent answer: 4 of 4</h2>
+<p>We gave the challenge to Grok, xAI's model, with one instruction: write your own verifier from the spec, without our code. It wrote one in Python, ran every check in the spec, including the post-quantum signatures and live lookups in the public log, and reached the same verdict as our answer key on all four bundles, failing each invalid one at the same check.</p>
+<table class="ag-proof">
+<thead><tr><th scope="col">Bundle</th><th scope="col">What we did to it</th><th scope="col">Grok's verdict</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>Changed why the trip happened, then re-linked every later record so the journal's own hashes still checked out</td><td><span class="ag-tag ag-tag-ok">Invalid, matches</span> (signed checkpoints name journal heads that no longer exist)</td></tr>
+<tr><td>B</td><td>Cut the trip out of every file, consistently</td><td><span class="ag-tag ag-tag-ok">Invalid, matches</span> (checkpoints the second machine received are missing)</td></tr>
+<tr><td>C</td><td>Nothing</td><td><span class="ag-tag ag-tag-ok">Valid, matches</span></td></tr>
+<tr><td>D</td><td>Changed one byte of one post-quantum signature, leaving the classical one intact</td><td><span class="ag-tag ag-tag-ok">Invalid, matches</span> (the post-quantum signature fails)</td></tr>
+</tbody>
+</table>
+<p class="ag-tablenote">Grok was run by us, so this is an independent implementation, not an independent party. It also listed twelve places where the spec was ambiguous or silent; we're folding those into the next version of the spec.</p>
 </section>
 
 <section class="ag-card">

@@ -1,0 +1,22 @@
+{
+ "challenge": "cybercircuit evidence challenge 1",
+ "nonce": "6023259f9d9cf6ca3413f87f296f62ce8c6987fa8d2c217f9ed9ea09cdffdb81",
+ "bundles": {
+  "A": {
+   "case": "rewrite",
+   "expected": "INVALID: checkpoints 2 and 3 name control-journal heads that the re-hashed journal does not contain"
+  },
+  "B": {
+   "case": "cut",
+   "expected": "INVALID: verifies on its own, but received checkpoints 2 and 3 are missing from the bundle"
+  },
+  "C": {
+   "case": "honest",
+   "expected": "VALID: every check passes, including all receipts"
+  },
+  "D": {
+   "case": "pq-sig",
+   "expected": "INVALID: the SLH-DSA signature on checkpoint 2 does not verify (its ECDSA signature does)"
+  }
+ }
+}
