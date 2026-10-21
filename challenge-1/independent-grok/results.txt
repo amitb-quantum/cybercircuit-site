@@ -1,0 +1,344 @@
+===== bundle-A
+  [PASS   ] §1         required files present
+  [PASS   ] §4.1       trusted gateway_key_id == SHA256(domain||u32be(32)||slh_pk||ecdsa_point)
+  [PASS   ] §1/7       bundle gateway keys equal trusted (same gateway_key_id)
+  [PASS   ] §2         decision: file framing
+  [PASS   ] §2         decision: header format/journal_id  -- {"format":"circuitbreaker-m2.1","journal_id":"0594df0a-a7d6-4bc8-a2ca-a7d9b9cfdc79"}
+  [PASS   ] §2         decision: record chain (1 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: file framing
+  [PASS   ] §3         control: header format/journal_id  -- {"format":"circuitbreaker-control.1","journal_id":"fbe9d750-7b08-4e17-9e0c-2a3ddbdfcd26"}
+  [PASS   ] §3         control: record chain (12 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: entry.kind in allowed set
+  [PASS   ] §4.2       checkpoints: file framing
+  [PASS   ] §4.2       checkpoint 1: line keys/order
+  [PASS   ] §4.4#1     checkpoint 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 1: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 1: both signatures verify
+  [PASS   ] §4.2       checkpoint 2: line keys/order
+  [PASS   ] §4.4#1     checkpoint 2: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 2: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 2: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 2: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 2: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 2: both signatures verify
+  [PASS   ] §4.2       checkpoint 3: line keys/order
+  [PASS   ] §4.4#1     checkpoint 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 3: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 3: both signatures verify
+  [PASS   ] §4.5       chain: statement.sequence == k
+  [PASS   ] §4.5       chain: previous_checkpoint_sha256 links
+  [PASS   ] §4.5       chain: journal_ids constant & equal journal headers
+  [PASS   ] §4.5       chain: decision/control sequences never decrease
+  [FAIL   ] §4.6       heads match journals (decision H(seq), control C(seq))  -- cp2 control, cp3 control
+  [INFO   ] §4.7       sealed (informational, not a validity check)  -- sealed
+  [PASS   ] §5#1/4.4#1 receipt 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 1: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 1: both signatures verify
+  [PASS   ] §5#2       receipt 1: bundle has checkpoint seq 1
+  [PASS   ] §5#3       receipt 1: same statement_sha256 as bundle cp 1  -- receipt d65057e8a03ac43a.. bundle d65057e8a03ac43a..
+  [INFO   ] §5         receipt 2: alarm event=tripped (no checkpoint, skipped)
+  [PASS   ] §5#1/4.4#1 receipt 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 3: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 3: both signatures verify
+  [PASS   ] §5#2       receipt 3: bundle has checkpoint seq 2
+  [PASS   ] §5#3       receipt 3: same statement_sha256 as bundle cp 2  -- receipt 5e0cda30edf78dfd.. bundle 5e0cda30edf78dfd..
+  [PASS   ] §5#1/4.4#1 receipt 4: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 4: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 4: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 4: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 4: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 4: both signatures verify
+  [PASS   ] §5#2       receipt 4: bundle has checkpoint seq 3
+  [PASS   ] §5#3       receipt 4: same statement_sha256 as bundle cp 3  -- receipt 0a62a870ffd717fb.. bundle 0a62a870ffd717fb..
+  [PASS   ] §6         anchor 1: schema_version
+  [PASS   ] §6#1       anchor 1: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 1: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 1: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 1: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 1: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 1: body binds to checkpoint
+  [PASS   ] §6#7       anchor 1: bundle checkpoint 1 has same statement_sha256
+  [PASS   ] §6 (online) anchor 1: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6         anchor 2: schema_version
+  [PASS   ] §6#1       anchor 2: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 2: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 2: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 2: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 2: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 2: body binds to checkpoint
+  [PASS   ] §6#7       anchor 2: bundle checkpoint 2 has same statement_sha256
+  [PASS   ] §6 (online) anchor 2: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6         anchor 3: schema_version
+  [PASS   ] §6#1       anchor 3: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 3: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 3: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 3: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 3: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 3: body binds to checkpoint
+  [PASS   ] §6#7       anchor 3: bundle checkpoint 3 has same statement_sha256
+  [PASS   ] §6 (online) anchor 3: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6#7       anchors in increasing checkpoint_sequence, single log_url
+  [PASS   ] §6#8       every control 'anchored' record has matching anchor line
+  VERDICT: INVALID — first failing check §4.6: heads match journals (decision H(seq), control C(seq)) cp2 control, cp3 control
+===== bundle-B
+  [PASS   ] §1         required files present
+  [PASS   ] §4.1       trusted gateway_key_id == SHA256(domain||u32be(32)||slh_pk||ecdsa_point)
+  [PASS   ] §1/7       bundle gateway keys equal trusted (same gateway_key_id)
+  [PASS   ] §2         decision: file framing
+  [PASS   ] §2         decision: header format/journal_id  -- {"format":"circuitbreaker-m2.1","journal_id":"0594df0a-a7d6-4bc8-a2ca-a7d9b9cfdc79"}
+  [PASS   ] §2         decision: record chain (0 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: file framing
+  [PASS   ] §3         control: header format/journal_id  -- {"format":"circuitbreaker-control.1","journal_id":"fbe9d750-7b08-4e17-9e0c-2a3ddbdfcd26"}
+  [PASS   ] §3         control: record chain (3 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: entry.kind in allowed set
+  [PASS   ] §4.2       checkpoints: file framing
+  [PASS   ] §4.2       checkpoint 1: line keys/order
+  [PASS   ] §4.4#1     checkpoint 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 1: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 1: both signatures verify
+  [PASS   ] §4.5       chain: statement.sequence == k
+  [PASS   ] §4.5       chain: previous_checkpoint_sha256 links
+  [PASS   ] §4.5       chain: journal_ids constant & equal journal headers
+  [PASS   ] §4.5       chain: decision/control sequences never decrease
+  [PASS   ] §4.6       heads match journals (decision H(seq), control C(seq))
+  [INFO   ] §4.7       sealed (informational, not a validity check)  -- sealed
+  [PASS   ] §5#1/4.4#1 receipt 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 1: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 1: both signatures verify
+  [PASS   ] §5#2       receipt 1: bundle has checkpoint seq 1
+  [PASS   ] §5#3       receipt 1: same statement_sha256 as bundle cp 1  -- receipt d65057e8a03ac43a.. bundle d65057e8a03ac43a..
+  [INFO   ] §5         receipt 2: alarm event=tripped (no checkpoint, skipped)
+  [PASS   ] §5#1/4.4#1 receipt 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 3: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 3: both signatures verify
+  [FAIL   ] §5#2       receipt 3: bundle has checkpoint seq 2
+  [FAIL   ] §5#3       receipt 3: same statement_sha256 as bundle cp 2
+  [PASS   ] §5#1/4.4#1 receipt 4: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 4: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 4: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 4: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 4: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 4: both signatures verify
+  [FAIL   ] §5#2       receipt 4: bundle has checkpoint seq 3
+  [FAIL   ] §5#3       receipt 4: same statement_sha256 as bundle cp 3
+  [PASS   ] §6         anchor 1: schema_version
+  [PASS   ] §6#1       anchor 1: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 1: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 1: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 1: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 1: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 1: body binds to checkpoint
+  [PASS   ] §6#7       anchor 1: bundle checkpoint 1 has same statement_sha256
+  [PASS   ] §6 (online) anchor 1: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6#7       anchors in increasing checkpoint_sequence, single log_url
+  [PASS   ] §6#8       every control 'anchored' record has matching anchor line
+  VERDICT: INVALID — first failing check §5#2: receipt 3: bundle has checkpoint seq 2 
+===== bundle-C
+  [PASS   ] §1         required files present
+  [PASS   ] §4.1       trusted gateway_key_id == SHA256(domain||u32be(32)||slh_pk||ecdsa_point)
+  [PASS   ] §1/7       bundle gateway keys equal trusted (same gateway_key_id)
+  [PASS   ] §2         decision: file framing
+  [PASS   ] §2         decision: header format/journal_id  -- {"format":"circuitbreaker-m2.1","journal_id":"0594df0a-a7d6-4bc8-a2ca-a7d9b9cfdc79"}
+  [PASS   ] §2         decision: record chain (1 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: file framing
+  [PASS   ] §3         control: header format/journal_id  -- {"format":"circuitbreaker-control.1","journal_id":"fbe9d750-7b08-4e17-9e0c-2a3ddbdfcd26"}
+  [PASS   ] §3         control: record chain (12 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: entry.kind in allowed set
+  [PASS   ] §4.2       checkpoints: file framing
+  [PASS   ] §4.2       checkpoint 1: line keys/order
+  [PASS   ] §4.4#1     checkpoint 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 1: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 1: both signatures verify
+  [PASS   ] §4.2       checkpoint 2: line keys/order
+  [PASS   ] §4.4#1     checkpoint 2: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 2: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 2: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 2: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 2: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 2: both signatures verify
+  [PASS   ] §4.2       checkpoint 3: line keys/order
+  [PASS   ] §4.4#1     checkpoint 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 3: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 3: both signatures verify
+  [PASS   ] §4.5       chain: statement.sequence == k
+  [PASS   ] §4.5       chain: previous_checkpoint_sha256 links
+  [PASS   ] §4.5       chain: journal_ids constant & equal journal headers
+  [PASS   ] §4.5       chain: decision/control sequences never decrease
+  [PASS   ] §4.6       heads match journals (decision H(seq), control C(seq))
+  [INFO   ] §4.7       sealed (informational, not a validity check)  -- sealed
+  [PASS   ] §5#1/4.4#1 receipt 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 1: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 1: both signatures verify
+  [PASS   ] §5#2       receipt 1: bundle has checkpoint seq 1
+  [PASS   ] §5#3       receipt 1: same statement_sha256 as bundle cp 1  -- receipt d65057e8a03ac43a.. bundle d65057e8a03ac43a..
+  [INFO   ] §5         receipt 2: alarm event=tripped (no checkpoint, skipped)
+  [PASS   ] §5#1/4.4#1 receipt 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 3: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 3: both signatures verify
+  [PASS   ] §5#2       receipt 3: bundle has checkpoint seq 2
+  [PASS   ] §5#3       receipt 3: same statement_sha256 as bundle cp 2  -- receipt 5e0cda30edf78dfd.. bundle 5e0cda30edf78dfd..
+  [PASS   ] §5#1/4.4#1 receipt 4: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 4: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 4: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 4: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 4: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 4: both signatures verify
+  [PASS   ] §5#2       receipt 4: bundle has checkpoint seq 3
+  [PASS   ] §5#3       receipt 4: same statement_sha256 as bundle cp 3  -- receipt 0a62a870ffd717fb.. bundle 0a62a870ffd717fb..
+  [PASS   ] §6         anchor 1: schema_version
+  [PASS   ] §6#1       anchor 1: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 1: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 1: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 1: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 1: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 1: body binds to checkpoint
+  [PASS   ] §6#7       anchor 1: bundle checkpoint 1 has same statement_sha256
+  [PASS   ] §6 (online) anchor 1: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6         anchor 2: schema_version
+  [PASS   ] §6#1       anchor 2: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 2: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 2: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 2: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 2: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 2: body binds to checkpoint
+  [PASS   ] §6#7       anchor 2: bundle checkpoint 2 has same statement_sha256
+  [PASS   ] §6 (online) anchor 2: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6         anchor 3: schema_version
+  [PASS   ] §6#1       anchor 3: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 3: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 3: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 3: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 3: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 3: body binds to checkpoint
+  [PASS   ] §6#7       anchor 3: bundle checkpoint 3 has same statement_sha256
+  [PASS   ] §6 (online) anchor 3: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6#7       anchors in increasing checkpoint_sequence, single log_url
+  [PASS   ] §6#8       every control 'anchored' record has matching anchor line
+  VERDICT: VALID
+===== bundle-D
+  [PASS   ] §1         required files present
+  [PASS   ] §4.1       trusted gateway_key_id == SHA256(domain||u32be(32)||slh_pk||ecdsa_point)
+  [PASS   ] §1/7       bundle gateway keys equal trusted (same gateway_key_id)
+  [PASS   ] §2         decision: file framing
+  [PASS   ] §2         decision: header format/journal_id  -- {"format":"circuitbreaker-m2.1","journal_id":"0594df0a-a7d6-4bc8-a2ca-a7d9b9cfdc79"}
+  [PASS   ] §2         decision: record chain (1 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: file framing
+  [PASS   ] §3         control: header format/journal_id  -- {"format":"circuitbreaker-control.1","journal_id":"fbe9d750-7b08-4e17-9e0c-2a3ddbdfcd26"}
+  [PASS   ] §3         control: record chain (12 records: format, sequence, ids, previous_sha256, sha256)
+  [PASS   ] §3         control: entry.kind in allowed set
+  [PASS   ] §4.2       checkpoints: file framing
+  [PASS   ] §4.2       checkpoint 1: line keys/order
+  [PASS   ] §4.4#1     checkpoint 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 1: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 1: both signatures verify
+  [PASS   ] §4.2       checkpoint 2: line keys/order
+  [PASS   ] §4.4#1     checkpoint 2: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 2: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 2: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 2: ECDSA P-256/SHA-256 signature
+  [FAIL   ] §4.4#4     checkpoint 2: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [FAIL   ] §4.4#5     checkpoint 2: both signatures verify
+  [PASS   ] §4.2       checkpoint 3: line keys/order
+  [PASS   ] §4.4#1     checkpoint 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       checkpoint 3: statement bytes in canonical key order/compact
+  [PASS   ] §4.4#2     checkpoint 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §4.4#3     checkpoint 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §4.4#4     checkpoint 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §4.4#5     checkpoint 3: both signatures verify
+  [PASS   ] §4.5       chain: statement.sequence == k
+  [PASS   ] §4.5       chain: previous_checkpoint_sha256 links
+  [PASS   ] §4.5       chain: journal_ids constant & equal journal headers
+  [PASS   ] §4.5       chain: decision/control sequences never decrease
+  [PASS   ] §4.6       heads match journals (decision H(seq), control C(seq))
+  [INFO   ] §4.7       sealed (informational, not a validity check)  -- sealed
+  [PASS   ] §5#1/4.4#1 receipt 1: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 1: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 1: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 1: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 1: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 1: both signatures verify
+  [PASS   ] §5#2       receipt 1: bundle has checkpoint seq 1
+  [PASS   ] §5#3       receipt 1: same statement_sha256 as bundle cp 1  -- receipt d65057e8a03ac43a.. bundle d65057e8a03ac43a..
+  [INFO   ] §5         receipt 2: alarm event=tripped (no checkpoint, skipped)
+  [PASS   ] §5#1/4.4#1 receipt 3: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 3: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 3: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 3: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 3: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 3: both signatures verify
+  [PASS   ] §5#2       receipt 3: bundle has checkpoint seq 2
+  [PASS   ] §5#3       receipt 3: same statement_sha256 as bundle cp 2  -- receipt 5e0cda30edf78dfd.. bundle 5e0cda30edf78dfd..
+  [PASS   ] §5#1/4.4#1 receipt 4: schema_version & gateway_key_id == trusted
+  [PASS   ] §4.3       receipt 4: statement bytes in canonical key order/compact
+  [PASS   ] §5#1/4.4#2 receipt 4: statement_sha256 == SHA256(STATEMENT_BYTES)
+  [PASS   ] §5#1/4.4#3 receipt 4: ECDSA P-256/SHA-256 signature
+  [PASS   ] §5#1/4.4#4 receipt 4: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes
+  [PASS   ] §5#1/4.4#5 receipt 4: both signatures verify
+  [PASS   ] §5#2       receipt 4: bundle has checkpoint seq 3
+  [PASS   ] §5#3       receipt 4: same statement_sha256 as bundle cp 3  -- receipt 0a62a870ffd717fb.. bundle 0a62a870ffd717fb..
+  [PASS   ] §6         anchor 1: schema_version
+  [PASS   ] §6#1       anchor 1: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 1: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 1: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 1: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 1: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 1: body binds to checkpoint
+  [PASS   ] §6#7       anchor 1: bundle checkpoint 1 has same statement_sha256
+  [PASS   ] §6 (online) anchor 1: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6         anchor 2: schema_version
+  [PASS   ] §6#1       anchor 2: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 2: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 2: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 2: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 2: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 2: body binds to checkpoint
+  [PASS   ] §6#7       anchor 2: bundle checkpoint 2 has same statement_sha256
+  [PASS   ] §6 (online) anchor 2: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6         anchor 3: schema_version
+  [PASS   ] §6#1       anchor 3: logID == SHA256(trusted log SPKI)
+  [PASS   ] §6#2       anchor 3: signedEntryTimestamp
+  [PASS   ] §6#3       anchor 3: uuid (64/80 hex) ends with leaf hash
+  [PASS   ] §6#4       anchor 3: inclusion proof -> rootHash
+  [PASS   ] §6#5       anchor 3: signed tree head note  -- sig=True size/root=True
+  [PASS   ] §6#6       anchor 3: body binds to checkpoint
+  [PASS   ] §6#7       anchor 3: bundle checkpoint 3 has same statement_sha256
+  [PASS   ] §6 (online) anchor 3: live Rekor entry equals stored (body,integratedTime,logID,logIndex)
+  [PASS   ] §6#7       anchors in increasing checkpoint_sequence, single log_url
+  [PASS   ] §6#8       every control 'anchored' record has matching anchor line
+  VERDICT: INVALID — first failing check §4.4#4: checkpoint 2: SLH-DSA-SHA2-128f pure, ctx, 17088 bytes 
