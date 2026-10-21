@@ -23,7 +23,8 @@ a{color:var(--blue)}
 .site-nav{display:flex;gap:28px;flex-wrap:wrap}
 .site-nav a{color:var(--body);text-decoration:none;font-weight:600;font-size:.95rem}
 .site-nav a:hover{color:var(--blue)}
-.site-nav a.active{color:var(--ink)}
+.site-nav a.active{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:2px;text-underline-offset:7px}
+.brand.active{text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:2px;text-underline-offset:7px}
 .site-footer{border-top:1px solid var(--line);padding:36px 0;margin-top:0;color:var(--faint);font-size:.88rem;background:#ffffff}
 .site-footer p{margin:0 0 6px}
 .site-footer a{color:var(--faint)}
