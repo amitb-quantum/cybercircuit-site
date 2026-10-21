@@ -129,11 +129,11 @@
 </section>
 
 <section class="ag-card">
-<h2 class="ag-h2">What we'll tighten</h2>
-<p>The run found two things worth fixing. Neither let the agent out.</p>
+<h2 class="ag-h2">What we tightened afterwards</h2>
+<p>The run found two things worth fixing. Neither let the agent out. Both fixes have since passed our automated tests on the lab machine.</p>
 <ul class="ag-limits">
-<li>The sandbox's own root folder is writable in memory. Nothing written there reaches the host or survives the run, but it should be read-only.</li>
-<li>While tripped, every refused model request is recorded separately. The agent retried 11 times. Repeated refusals should be counted in one record, as we already do for refused connections.</li>
+<li>The sandbox's own root folder was writable in memory. It is now read-only, and the sandbox refuses to start the agent if it isn't. The workspace and the agent's temporary folders stay writable. We haven't yet re-run Claude Code itself under the read-only root.</li>
+<li>While tripped, every refused model request was recorded separately; the agent retried 11 times. Repeated refusals are now counted in one record, as refused connections already were.</li>
 </ul>
 </section>
 
