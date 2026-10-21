@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence challenge 1 | Cyber-Circuit</title>
+<meta name="description" content="Four evidence bundles from a real Cyber-Circuit run, a format spec, and receipts held on a second machine. Write your own verifier and tell us which bundles are valid.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site-header"><div class="site-wrap site-header-inner">
+<a class="brand" href="../index.html">Cyber-Circuit</a>
+<nav class="site-nav" aria-label="Main">
+<a href="../results.html">Lab results</a>
+<a href="../research.html">Research</a>
+<a href="../browser.html">Cyber-Circuit Browser</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div></header>
+<main>
+<div class="cc-agent">
+<section class="ag-hero lab-hero">
+<div class="ag-wrap">
+<p class="lab-when">Evidence challenge 1, published 21 October 2026</p>
+<h1 class="ag-h1 lab-h1">Four bundles. Which ones are real?</h1>
+<p class="ag-lede lab-lede">These are evidence bundles from one real Cyber-Circuit run, plus the format spec and the receipts a second machine collected while the run happened. Some bundles have been tampered with. Using the spec alone, without our code, decide which bundles are valid and say why.</p>
+<div class="ag-btnrow">
+<a class="ag-btn ag-btn-p" href="evidence-challenge-1.zip">Download everything (zip)</a>
+<a class="ag-btn ag-btn-s" href="spec.md">Read the spec</a>
+</div>
+</div>
+</section>
+<div class="ag-body"><div class="ag-wrap">
+
+<section class="ag-card">
+<h2 class="ag-h2">The task</h2>
+<ol>
+<li>Read <a href="spec.md">the bundle format spec</a>. It is meant to be enough to build a verifier from scratch.</li>
+<li>Write your own verifier, in any language. Please don't use CircuitBreaker's code; the point is a second, independent implementation.</li>
+<li>Check each of <code>bundle-A</code> to <code>bundle-D</code> with the trusted gateway keys, the trusted log key, and the receipts below.</li>
+<li>For each bundle, give a verdict, <strong>valid</strong> or <strong>invalid</strong>, and the first check that fails. If you couldn't run a check (for example, no SLH-DSA library), say so rather than skipping it.</li>
+</ol>
+</section>
+
+<section class="ag-card">
+<h2 class="ag-h2">Files</h2>
+<table>
+<tbody>
+<tr><th scope="row">Spec</th><td><a href="spec.md">spec.md</a> (CircuitBreaker evidence bundle format, version 1)</td></tr>
+<tr><th scope="row">Bundles</th><td><code>bundle-A/</code> &hellip; <code>bundle-D/</code>, each with <code>decision.jsonl</code>, <code>control.jsonl</code>, <code>checkpoints.jsonl</code>, <code>gateway-keys.pub.json</code>, <code>rekor-anchors.jsonl</code>, <code>rekor-log.pub.pem</code>. For example <a href="bundle-A/checkpoints.jsonl">bundle-A/checkpoints.jsonl</a>.</td></tr>
+<tr><th scope="row">Receipts</th><td><a href="receipts.jsonl">receipts.jsonl</a>: the alarms a second machine received while the run happened, through a channel that could only append</td></tr>
+<tr><th scope="row">Trusted gateway keys</th><td><a href="gateway-keys.pub.json">gateway-keys.pub.json</a>, key ID <code>f481ce5d6f19fe6e496a637f77a4a0e98b1c1f1dfc6eaed464de7d101efda039</code></td></tr>
+<tr><th scope="row">Trusted log key</th><td><a href="rekor-log.pub.pem">rekor-log.pub.pem</a>: the public key of Sigstore's Rekor v1 log, <code>https://rekor.sigstore.dev</code>, log ID <code>c0d23d6ad406973f9559f3ba2d1ca01f84147d8ffc5b8445c224f98b9591801d</code>, from Sigstore's published trusted root</td></tr>
+<tr><th scope="row">Checksums</th><td><a href="SHA256SUMS">SHA256SUMS</a></td></tr>
+</tbody>
+</table>
+<p class="ag-tablenote">The run's start, trip, and shutdown checkpoints are also in the public Rekor log at indexes 3361100305, 3361101674, and 3361102328, so you can fetch them yourself.</p>
+</section>
+
+<section class="ag-card">
+<h2 class="ag-h2">Committed answers</h2>
+<p>We wrote down the expected verdict for each bundle before publishing, in a file with a random nonce so it can't be guessed. Its SHA-256 is:</p>
+<p><code>85f6352b5e6dec3a816139829c869aeb964b0f64bc02f1692af1b08094d4b368</code></p>
+<p>We'll publish that file after independent answers come in, so anyone can check we didn't change the answers afterwards. Send your verdicts to <a href="mailto:info@quantum-clarity.com?subject=Evidence%20challenge%201">info@quantum-clarity.com</a>.</p>
+</section>
+
+<section class="ag-card">
+<h2 class="ag-h2">What this does and doesn't test</h2>
+<ul class="ag-limits">
+<li>It tests whether the bundle format can be checked by someone else's code, and whether that code catches cuts and rewrites that our own verifier catches.</li>
+<li>It doesn't test whether the gateway recorded everything that happened, or anything about the agent sandbox. Those are lab results, described on <a href="../results.html">Lab results</a>.</li>
+<li>The run, the machines, and the spec are ours. An independent verifier is one step toward outside review, not a substitute for it.</li>
+</ul>
+</section>
+
+</div></div>
+</div>
+</main>
+<footer class="site-footer"><div class="site-wrap">
+<p><strong style="color:#101828">Cyber-Circuit</strong>: a circuit breaker for AI agents</p>
+<p>A product of Quantum Clarity LLC &middot; <a href="mailto:info@quantum-clarity.com">info@quantum-clarity.com</a></p>
+</div></footer>
+</body>
+</html>
