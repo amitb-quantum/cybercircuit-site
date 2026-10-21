@@ -115,6 +115,19 @@
 </table>
 </section>
 
+<section class="ag-card" id="public-log">
+<h2 class="ag-h2">Evidence that left the machine</h2>
+<p>In a separate run the same evening, we added one more copy that nobody on the machine can edit. The gateway recorded its start, trip, and shutdown checkpoints in Sigstore's public transparency log. Only a fingerprint of each checkpoint, its signature, and the run's public key were sent; no journal content left the machine.</p>
+<table>
+<tbody>
+<tr><th scope="row">Start</th><td><a href="https://search.sigstore.dev/?logIndex=3347335474">Log entry 3347335474</a></td></tr>
+<tr><th scope="row">Trip</th><td><a href="https://search.sigstore.dev/?logIndex=3347336194">Log entry 3347336194</a></td></tr>
+<tr><th scope="row">Shutdown</th><td><a href="https://search.sigstore.dev/?logIndex=3347336487">Log entry 3347336487</a></td></tr>
+</tbody>
+</table>
+<p class="ag-tablenote">The evidence bundle carries the log's own signed proof of each entry and verifies it without going online. Fetched back from the log afterwards, all three matched. Cutting the trip from the journals would now contradict a public record anyone can check. The log's signatures are classical; the post-quantum signature is inside the checkpoint each entry fingerprints.</p>
+</section>
+
 <section class="ag-card">
 <h2 class="ag-h2">What we'll tighten</h2>
 <p>The run found two things worth fixing. Neither let the agent out.</p>
