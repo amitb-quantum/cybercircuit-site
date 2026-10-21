@@ -155,6 +155,13 @@
 <p class="ag-tablenote">The evidence bundle carries the log's own signed proof of each entry and verifies it without going online. Fetched back from the log afterwards, all three matched. Cutting the trip from the journals would now contradict a public record anyone can check. The log's signatures are classical; the post-quantum signature is inside the checkpoint each entry fingerprints.</p>
 </section>
 
+<section class="ag-card" id="hidden-trip">
+<h2 class="ag-h2">A hidden trip, caught from another machine</h2>
+<p>The next day we tested the case these records exist for: someone in control of the gateway's machine tries to erase a trip. Every alarm, including each signed checkpoint, was also sent to a second computer as it happened, through a key that can only add to one file there. It can't read, change, or delete anything.</p>
+<p>After the run we cut the trip out of everything on the gateway's machine, consistently: the journals, the checkpoints, the log entries file, and the local alarm log. The result looked complete and verified on its own. Checked on the second computer against what it had received, it was refused: a signed checkpoint it held was missing. The original, uncut record verified there in full.</p>
+<p class="ag-tablenote">Two machines of ours on one network, one run. Records written after the last checkpoint that reached the second machine aren't protected, and someone who controls both machines could still erase both copies.</p>
+</section>
+
 <section class="ag-card">
 <h2 class="ag-h2">What we tightened afterwards</h2>
 <p>The run found two things worth fixing. Neither let the agent out. Both fixes have since passed our automated tests on the lab machine.</p>
