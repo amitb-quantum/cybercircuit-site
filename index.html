@@ -103,13 +103,13 @@
 <tr><td>An edited journal record fails verification</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>Evidence is signed with NIST post-quantum signatures (FIPS 205), and deleting records that a checkpoint already sent off the machine covers is detected</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>Checkpoints at start, trip, reset, and shutdown are also recorded in a public transparency log (Sigstore Rekor), and the evidence bundle proves each entry offline (<a href="results.html#public-log">see the entries</a>)</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
-<tr><td>The agent runs in a sandbox with no network. On our lab machine, a real Claude Code agent tried eight ways around the gateway, and every one failed</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>The agent runs in a sandbox with no network. On our lab machine, two real agents from different labs, Claude Code and Codex CLI, were each told to try eight ways around the gateway, and every attempt failed</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>Model API traffic goes through a forwarder that holds the key, allows only listed request types to one verified host, enforces a request budget, and stops on a trip</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>An evidence bundle verifies on another machine, with the signing keys taken from a separate source rather than from the bundle. A verifier written from our published spec by another AI, without our code, reached the same verdicts on a blind set (<a href="challenge-1/">see the challenge</a>). Not yet checked by an outside party</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
-<tr><td>A real Claude Code agent stopped end to end: tripped, killed, alarmed, and kept stopped until an operator reset (<a href="results.html">see the run</a>)</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>Real agents from two labs, Anthropic's Claude Code and OpenAI's Codex CLI, each stopped end to end: tripped, killed, alarmed, and kept stopped until an operator reset (<a href="results.html">see the runs</a>)</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 </tbody>
 </table>
-<p class="ag-tablenote">Lab machines: Ubuntu on WSL2, where every claim was first proven, and Debian 13 in a virtual machine on a second computer, where the full automated test suite, sandbox tests included, also passes. Two machines don't establish portability to every kernel or distribution. The real-agent run passed on both and is written up on <a href="results.html">Lab results</a>.</p>
+<p class="ag-tablenote">Lab machines: Ubuntu on WSL2, where every claim was first proven, and Debian 13 in a virtual machine on a second computer, where the full automated test suite, sandbox tests included, also passes. Two machines don't establish portability to every kernel or distribution. The Claude Code run passed on both; the Codex CLI run, on the WSL2 machine. Both are written up on <a href="results.html">Lab results</a>.</p>
 </section>
 
 <section class="ag-card">
