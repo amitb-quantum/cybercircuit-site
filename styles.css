@@ -455,3 +455,10 @@ main{display:block}
 @keyframes lab-open-v{from{transform:rotate(0);background:var(--navy-3)}to{transform:rotate(-32deg);background:var(--hot)}}
 }
 }
+
+/* ---------- try-it page: command and key blocks ---------- */
+.cc-agent .ag-code{font-family:var(--mono);font-size:.84rem;line-height:1.6;background:#f4f7fb;border:1px solid #dde4ee;border-radius:8px;padding:14px 16px;margin:0 0 16px;overflow-x:auto;white-space:pre;color:var(--head)}
+.cc-agent .ag-fp{font-size:1rem;font-weight:700;white-space:pre-wrap;overflow-wrap:anywhere}
+.cc-agent .ag-card code{font-family:var(--mono);font-size:.88em;background:#f4f7fb;border:1px solid #e3e9f1;border-radius:4px;padding:0 5px}
+.cc-agent .ag-cta code{background:rgba(255,255,255,.12);border:0}
+.cc-agent .ag-fp-line{white-space:pre-wrap;overflow-wrap:anywhere}

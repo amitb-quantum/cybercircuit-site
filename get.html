@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Try Cyber-Circuit | A circuit breaker for AI agents</title>
+<meta name="description" content="Download the signed Cyber-Circuit evaluation release for Linux, check it against the release key published here, and trip a demo agent in about ten minutes.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header"><div class="site-wrap site-header-inner">
+<a class="brand" href="index.html">Cyber-Circuit</a>
+<nav class="site-nav" aria-label="Main">
+<a href="get.html" class="active" aria-current="page">Try it</a>
+<a href="results.html">Lab results</a>
+<a href="challenge-1/">Verify the evidence</a>
+<a href="research.html">Research</a>
+<a href="browser.html">Cyber-Circuit Browser</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div></header>
+<main>
+<div class="cc-agent">
+
+<section class="ag-hero lab-hero">
+<div class="ag-wrap">
+<h1 class="ag-h1 lab-h1">Trip a contained agent on your own machine.</h1>
+<p class="ag-lede lab-lede">The evaluation release is one signed download for Linux. In about ten minutes, a demo agent goes past its quota, the breaker kills it, a relaunch is refused, and you check the signed evidence with an open-source verifier. It needs no API keys.</p>
+<div class="ag-btnrow">
+<a class="ag-btn ag-btn-p" href="https://github.com/amitb-quantum/cybercircuit/blob/main/release/QUICKSTART.md">Open the quickstart</a>
+<a class="ag-btn ag-btn-s" href="https://github.com/amitb-quantum/cybercircuit/releases/tag/v0.1.0-eval.4">Release v0.1.0-eval.4</a>
+</div>
+<p class="ag-status">Linux x86_64. Tested on Ubuntu 26.04, Ubuntu 24.04 under WSL2, and Debian 13.</p>
+</div>
+</section>
+
+<div class="ag-body">
+<div class="ag-wrap">
+
+<section class="ag-card" id="key">
+<h2 class="ag-h2">Release signing key</h2>
+<p>Every release is signed with one Ed25519 key that we keep offline. Before you trust a download, check that this fingerprint matches the one in the <a href="https://github.com/amitb-quantum/cybercircuit#release-signing-key">public repository's README</a>. This page and the README are two separate places, so a change to one would show up as a mismatch.</p>
+<pre class="ag-code ag-fp">SHA256:yp+kIpuLgQ9ENakbk0Sm0y3uSf2WYW4NhtaqT+BRcT4</pre>
+<p>The full key, as the <code>allowed_signers</code> line that OpenSSH uses to check a signature:</p>
+<pre class="ag-code ag-fp-line">release@cybercircuit.ai namespaces="cybercircuit-release" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFu0A1fDzovoVloCtVVa424IDdQRDILbFqm8WosiOhT</pre>
+<p>If we ever replace the key, the new one will be announced here and in the README, and signed by this one.</p>
+</section>
+
+<section class="ag-card">
+<h2 class="ag-h2">Download and check it</h2>
+<p>These commands download the release, show the key's fingerprint so you can compare it with the one above, then check the signature and the hash. The <a href="https://github.com/amitb-quantum/cybercircuit/blob/main/release/QUICKSTART.md">quickstart</a> takes it from there: install, run the demo, check the evidence.</p>
+<pre class="ag-code">sudo apt-get update && sudo apt-get install -y bubblewrap python3 systemd dbus-user-session openssh-client wget
+mkdir -p ~/cybercircuit && cd ~/cybercircuit
+V=0.1.0-eval.4; R=https://github.com/amitb-quantum/cybercircuit/releases/download/v$V
+wget -q $R/cybercircuit-$V-x86_64-linux-musl.tar.gz $R/SHA256SUMS $R/SHA256SUMS.sig
+wget -q https://raw.githubusercontent.com/amitb-quantum/cybercircuit/main/allowed_signers
+cut -d' ' -f3,4 allowed_signers | ssh-keygen -lf -
+ssh-keygen -Y verify -f allowed_signers -I release@cybercircuit.ai -n cybercircuit-release -s SHA256SUMS.sig &lt; SHA256SUMS
+sha256sum -c SHA256SUMS</pre>
+<p>You should see the fingerprint above, then <code>Good "cybercircuit-release" signature</code>, then <code>OK</code> for the tarball. If any of the three differs, stop and tell us.</p>
+</section>
+
+<section class="ag-card">
+<h2 class="ag-h2">What's in the release</h2>
+<table class="ag-proof">
+<thead><tr><th scope="col">File</th><th scope="col">Licence</th></tr></thead>
+<tbody>
+<tr><td><code>circuitbreaker</code>: the gateway, sandbox launcher, and evidence tools. One static binary.</td><td><a href="https://github.com/amitb-quantum/cybercircuit/blob/main/release/LICENSE-circuitbreaker.md">PolyForm Internal Use 1.0.0</a></td></tr>
+<tr><td><code>cybercircuit-verify</code>: the open-source evidence verifier, written from the <a href="evidence-bundle-format-v1.md">published bundle format</a>.</td><td>Apache-2.0</td></tr>
+<tr><td>Quickstart and guide, including how to run Claude Code, Codex CLI or Gemini CLI inside it.</td><td>Apache-2.0</td></tr>
+</tbody>
+</table>
+<p class="ag-tablenote">PolyForm Internal Use lets your organisation use the gateway for its own internal operations, free and with no time limit. You can't redistribute it. It comes as is, with no warranty.</p>
+<p>We installed the release on a freshly created machine, following only the quickstart: it took about six minutes from the first command to an independently verified evidence bundle.</p>
+</section>
+
+<section class="ag-card">
+<h2 class="ag-h2">Before you rely on it</h2>
+<div class="ag-callout ag-callout-limit">
+<strong>Limits of this release</strong>
+<ul class="ag-limits">
+<li>Linux on x86_64 only, and only the three systems above have been tested.</li>
+<li>Run it on a test machine or VM first. The agent can change anything in the workspace you give it.</li>
+<li>Receipts stay on the same machine unless you set up off-host delivery. The public transparency log shown on <a href="results.html#public-log">Lab results</a> is not configured by the quickstart.</li>
+<li>The post-quantum signature library is a pinned pre-release that has not been independently audited.</li>
+<li>An evidence bundle shows what the gateway recorded and signed. It is not proof of compliance.</li>
+</ul>
+</div>
+</section>
+
+<div class="ag-cta">
+<h2>Tried it? Tell us what broke.</h2>
+<p>We're looking for a few design partners running coding agents on Linux. Send us the output of <code style="color:#fff">circuitbreaker doctor</code> and what you tried, and we'll tell you honestly whether Cyber-Circuit fits yet.</p>
+<div class="ag-btnrow">
+<a class="ag-btn ag-btn-p" href="mailto:info@quantum-clarity.com?subject=Cyber-Circuit%20evaluation">Email us</a>
+<a class="ag-btn ag-btn-s" href="results.html">See the real-agent runs</a>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</main>
+<footer class="site-footer"><div class="site-wrap">
+<p><strong style="color:#101828">Cyber-Circuit</strong>: a circuit breaker for AI agents</p>
+<p>A product of Quantum Clarity LLC &middot; <a href="mailto:info@quantum-clarity.com">info@quantum-clarity.com</a></p>
+</div></footer>
+</body>
+</html>
