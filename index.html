@@ -11,6 +11,7 @@
 <header class="site-header"><div class="site-wrap site-header-inner">
 <a class="brand active" href="index.html" aria-current="page">Cyber-Circuit</a>
 <nav class="site-nav" aria-label="Main">
+<a href="get.html">Try it</a>
 <a href="results.html">Lab results</a>
 <a href="challenge-1/">Verify the evidence</a>
 <a href="research.html">Research</a>
@@ -28,10 +29,10 @@
 <h1 class="ag-h1">A circuit breaker for AI agents.</h1>
 <p class="ag-lede">Give an agent a fixed budget of tool authority. When it goes past that budget, Cyber-Circuit trips: it cuts the agent's authority, kills its processes, and raises your alarm. It stays tripped until a person resets it, with the reason on the record.</p>
 <div class="ag-btnrow">
-<a class="ag-btn ag-btn-p" href="mailto:info@quantum-clarity.com?subject=Cyber-Circuit%20early%20access">Request early access</a>
+<a class="ag-btn ag-btn-p" href="get.html">Try it on Linux</a>
 <a class="ag-btn ag-btn-s" href="results.html">See the real-agent run</a>
 </div>
-<p class="ag-status">Early access for Linux, MCP tools, and one agent per gateway. <a href="#proof" style="color:inherit">See what's proven, and what isn't.</a></p>
+<p class="ag-status">Signed evaluation release for Linux, MCP tools, and one agent per gateway. <a href="#proof" style="color:inherit">See what's proven, and what isn't.</a></p>
 </div>
 
 <figure class="ag-ledger">
@@ -107,6 +108,7 @@
 <tr><td>Model API traffic goes through a forwarder that holds the key, allows only listed request types to one verified host, enforces a request budget, and stops on a trip</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>An evidence bundle verifies on another machine, with the signing keys taken from a separate source rather than from the bundle. A verifier written from our published spec by another AI, without our code, reached the same verdicts on a blind set (<a href="challenge-1/">see the challenge</a>). Not yet checked by an outside party</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 <tr><td>Real agents from Anthropic, OpenAI and Google (Claude Code, Codex CLI, Gemini CLI) each stopped end to end: tripped, killed, alarmed, and kept stopped until an operator reset (<a href="results.html">see the runs</a>)</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
+<tr><td>The signed release installs and runs the demo end to end, with zero skipped checks, on Ubuntu 26.04, Ubuntu 24.04 under WSL2, and Debian 13. On a freshly created machine, following only the quickstart, we went from first command to an independently verified evidence bundle in about six minutes (<a href="get.html">try it</a>)</td><td><span class="ag-tag ag-tag-ok">Proven in the lab</span></td></tr>
 </tbody>
 </table>
 <p class="ag-tablenote">Lab machines: Ubuntu on WSL2, where every claim was first proven, and Debian 13 in a virtual machine on a second computer, where the full automated test suite, sandbox tests included, also passes. Two machines don't establish portability to every kernel or distribution. The Claude Code run passed on both; the Codex CLI and Gemini CLI runs, on the WSL2 machine. All are written up on <a href="results.html">Lab results</a>.</p>
@@ -136,7 +138,7 @@
 <a class="ag-btn ag-btn-p" href="mailto:info@quantum-clarity.com?subject=Cyber-Circuit%20early%20access">Request early access</a>
 <a class="ag-btn ag-btn-s" href="contact.html">Contact us</a>
 </div>
-<p class="ag-cta-note">The enforcement engine underneath, CircuitBreaker, is in private preview.</p>
+<p class="ag-cta-note">The enforcement engine underneath, CircuitBreaker, is closed source. The <a href="get.html" style="color:inherit">evaluation release</a> is free for internal use under the PolyForm Internal Use License 1.0.0.</p>
 </div>
 
 </div>
