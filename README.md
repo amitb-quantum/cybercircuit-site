@@ -17,7 +17,7 @@ Deploy anywhere that serves static files (currently: Cloudflare Pages).
 - `browser.html`: Cyber-Circuit Browser product page (copy ported from
   cyber-circuit.com/cyber-circuit-browser; download buttons point at the real
   GitHub release assets under `amitb-quantum/cyber-circuit-browser` v1.0.0)
-- `get.html`: Try it. The signed evaluation release: the release-key fingerprint (one of the two places it is published; the other is the `amitb-quantum/cybercircuit` README), download-and-verify commands, licence, limits. Keep the fingerprint identical to the public README.
+- `get.html`: Get access. Builds go to design partners on request (no public download). Carries the release-key fingerprint, one of the two places it is published (the other is the `amitb-quantum/cybercircuit` README); keep them identical.
 - `about.html`: About
 - `contact.html`: Contact (`info@quantum-clarity.com`)
 - `styles.css`: all site styles, namespaced per page (`.cc-agent` for home,
