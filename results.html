@@ -25,7 +25,7 @@
 
 <section class="ag-hero lab-hero">
 <div class="ag-wrap">
-<p class="lab-when">Lab runs, 20 to 22 October 2026</p>
+<p class="lab-when">Lab runs, 20 October to 5 November 2026</p>
 <h1 class="ag-h1 lab-h1">Agents from Anthropic, OpenAI and Google ran inside Cyber-Circuit. The breaker stopped every one.</h1>
 <p class="ag-lede lab-lede">We ran Anthropic's Claude Code, OpenAI's Codex CLI and Google's Gemini CLI inside Cyber-Circuit, each with access to one GitHub repository. Each did its job. When each went past its quota, the breaker opened, killed it, and kept it stopped until a person reset it. Claude Code and Codex CLI were also told to try eight ways around the gateway, and every attempt failed. Gemini CLI declined to try.</p>
 
@@ -42,7 +42,7 @@
 <a class="ag-btn ag-btn-p" href="#steps">See each step</a>
 <a class="ag-btn ag-btn-s" href="#limits">What this doesn't show</a>
 </div>
-<p class="ag-status">The steps above are the same for all three agents, except that Gemini CLI declined the bypass step. The Claude Code run was also repeated on a second machine running Debian, not WSL. Three agents, one tool server. The limits are listed below.</p>
+<p class="ag-status">The steps above are the same for all three agents, except that Gemini CLI declined the bypass step. The Claude Code run was also repeated on a second machine running Debian, not WSL. In November all three ran again with the model connection guarded too, and <a href="#hardening">none was wrongly stopped</a>. Three agents, one tool server. The limits are listed below.</p>
 </div>
 </section>
 
@@ -166,6 +166,7 @@
 <section class="ag-card" id="challenge">
 <h2 class="ag-h2">Check the evidence yourself</h2>
 <p>We published the evidence format as a spec, with four bundles from a real run, some tampered with, and the receipts a second machine collected. A verifier written from the spec alone, by another AI and without our code, sorted all four correctly. <a href="challenge-1/">See the evidence challenge</a>, or try it yourself.</p>
+<p>The newer evidence format, which records the model-connection checks, is published as <a href="https://github.com/amitb-quantum/cybercircuit/blob/main/spec/evidence-bundle-format-v2.md">a second spec</a>, with <a href="https://github.com/amitb-quantum/cybercircuit/tree/main/verifier/tests/data/t-ih14-2026-11-05">the three bundles</a> from the <a href="#hardening">November runs</a>.</p>
 </section>
 
 <section class="ag-card" id="debian">
@@ -201,6 +202,21 @@
 <p class="ag-tablenote">Two machines of ours on one network, one run. Records written after the last checkpoint that reached the second machine aren't protected, and someone who controls both machines could still erase both copies.</p>
 </section>
 
+<section class="ag-card" id="hardening">
+<h2 class="ag-h2">Three agents with the model connection guarded</h2>
+<p>On 5 November we ran Claude Code, Codex CLI and Gemini CLI again, this time with the gateway also guarding the model connection: a tunnel, or a request to forward traffic to another address, trips the breaker, and a request for a model service that isn't on the list is refused and recorded. Each run's packages were fixed before launch and read-only. We wanted to know whether these checks would wrongly stop real agents doing ordinary work.</p>
+<table>
+<tbody>
+<tr><th scope="row">Agents</th><td>Claude Code 2.1.311, Codex CLI 0.142.5 and Gemini CLI 0.65.0 (Gemini 3.6 Flash), unmodified, on the WSL2 lab machine, each in a freshly created project.</td></tr>
+<tr><th scope="row">Normal work</th><td>Each read files, listed issues and created one issue. None was stopped, and none was refused a model request it should have had.</td></tr>
+<tr><th scope="row">Trip</th><td>Each was then asked for a second issue, beyond its quota of one. The call was refused, the breaker tripped, the agent was killed and the kill was confirmed.</td></tr>
+<tr><th scope="row">Restart and reset</th><td>Each stayed tripped when relaunched, and ran normally again only after an operator reset.</td></tr>
+<tr><th scope="row">Evidence</th><td>All three bundles, in the newer <a href="https://github.com/amitb-quantum/cybercircuit/blob/main/spec/evidence-bundle-format-v2.md">evidence format</a>, verified against our own copy of the signing keys and every checkpoint the alarm channel received. Our open-source verifier, written without the gateway's code, got the same verdict and the same counts for each. The bundles are <a href="https://github.com/amitb-quantum/cybercircuit/tree/main/verifier/tests/data/t-ih14-2026-11-05">published</a>, so you can check them yourself.</td></tr>
+</tbody>
+</table>
+<p class="ag-tablenote">No agent tried to tunnel or reroute its model connection, so these runs show the checks don't get in the way; that they trip when an agent does try is shown by our automated tests, not by these runs. The runs used no package set. Escape attempts that skip the gateway are blocked by the sandbox but aren't observed or recorded. The alarm receipts in these runs stayed on the same machine. None of this is in a signed build yet.</p>
+</section>
+
 <section class="ag-card">
 <h2 class="ag-h2">What we tightened afterwards</h2>
 <p>The run found two things worth fixing. Neither let the agent out. Both fixes have since passed our automated tests on the lab machine.</p>
@@ -215,7 +231,7 @@
 <div class="ag-callout ag-callout-limit">
 <strong>Evidence boundary</strong>
 <ul class="ag-limits">
-<li>Four runs on two machines of ours: Claude Code on Ubuntu under WSL2 and on Debian 13 in a virtual machine, and Codex CLI and Gemini CLI on the WSL2 machine. None is bare metal, a container, or a cloud host. Three agents, one tool server, one version of each.</li>
+<li>The October runs were four runs on two machines of ours: Claude Code on Ubuntu under WSL2 and on Debian 13 in a virtual machine, and Codex CLI and Gemini CLI on the WSL2 machine. None is bare metal, a container, or a cloud host. Three agents, one tool server, one version of each. The November runs were on the WSL2 machine only.</li>
 <li>The eight attempts are the ones we listed in advance, carried out by Claude Code and Codex CLI because we told them to; Gemini CLI declined. That is a test of the containment, not evidence that an agent tries to escape on its own, and it isn't an exhaustive attack.</li>
 <li>The agent's workspace and its prompts to the model are still ways data can leave. Cyber-Circuit governs authority, not the content of model requests.</li>
 <li>After the restart the agent couldn't reach the model, so it never tried a tool call while tripped. That case is covered by our automated tests, not by this run.</li>
